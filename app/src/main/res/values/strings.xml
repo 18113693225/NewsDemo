@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">News</string>
+
+    <!--底部导航-->
+    <string name="home">首页</string>
+    <string name="business">商机</string>
+    <string name="focus">关注</string>
+    <string name="myself">我的</string>
+    <string name="add">添加</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

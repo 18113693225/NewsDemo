@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="65.32999dip"
+    android:layout_alignParentBottom="true"
+    >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="52.0dip"
+        android:layout_gravity="bottom"
+        android:background="@drawable/tab_bg"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <FrameLayout
+            android:id="@+id/fl_home"
+            android:layout_width="fill_parent"
+            android:layout_height="48.0dip"
+            android:layout_weight="1.0" >
+
+            <ImageView
+                android:id="@+id/menu_img_home"
+                android:layout_width="28.0dip"
+                android:layout_height="28.0dip"
+                android:layout_gravity="top|center"
+                android:layout_marginTop="5.0dip"
+                android:src="@mipmap/home_pressed" />
+
+            <TextView
+                android:id="@+id/menu_text_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="2.0dip"
+                android:text="@string/home"
+                android:textColor="@color/menu_btn_text_pressed"
+                android:textSize="10.0dip" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_business"
+            android:layout_width="fill_parent"
+            android:layout_height="48.0dip"
+            android:layout_marginRight="10.0dip"
+            android:layout_weight="1.0" >
+
+            <ImageView
+                android:id="@+id/menu_img_business"
+                android:layout_width="28.0dip"
+                android:layout_height="28.0dip"
+                android:layout_gravity="top|center"
+                android:layout_marginTop="5.0dip"
+                android:src="@mipmap/business_normal" />
+
+            <TextView
+                android:id="@+id/menu_text_business"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="2.0dip"
+                android:text="@string/business"
+                android:textColor="@color/menu_btn_text_normal"
+                android:textSize="10.0dip" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0" />
+
+        <FrameLayout
+            android:id="@+id/fl_focus"
+            android:layout_width="fill_parent"
+            android:layout_height="48.0dip"
+            android:layout_marginLeft="10.0dip"
+            android:layout_weight="1.0" >
+
+            <ImageView
+                android:id="@+id/menu_img_focus"
+                android:layout_width="27.0dip"
+                android:layout_height="27.0dip"
+                android:layout_gravity="top|center"
+                android:layout_marginTop="5.0dip"
+                android:src="@mipmap/focus_normal" />
+
+            <TextView
+                android:id="@+id/menu_text_focus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="2.0dip"
+                android:textColor="@color/menu_btn_text_normal"
+                android:text="@string/focus"
+                android:textSize="10.0dip" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_myself"
+            android:layout_width="fill_parent"
+            android:layout_height="48.0dip"
+            android:layout_weight="1.0" >
+
+            <ImageView
+                android:id="@+id/menu_img_myself"
+                android:layout_width="27.0dip"
+                android:layout_height="27.0dip"
+                android:layout_gravity="top|center"
+                android:layout_marginTop="5.0dip"
+                android:src="@mipmap/myself_normal" />
+
+            <TextView
+                android:id="@+id/menu_text_myself"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:layout_marginBottom="2.0dip"
+                android:textColor="@color/menu_btn_text_normal"
+                android:text="@string/myself"
+                android:textSize="10.0dip" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:id="@+id/menu_img_add"
+            android:layout_width="48dip"
+            android:layout_height="48dp"
+            android:layout_gravity="top|center"
+            android:scaleType="fitCenter"
+            android:layout_marginBottom="20dp"
+            android:src="@mipmap/add_normal" />
+        <TextView
+            android:id="@+id/menu_text_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="5dip"
+            android:text="@string/add"
+            android:textColor="@color/menu_btn_text_normal"
+            android:textSize="10.0dip" />
+    </FrameLayout>
+
+</FrameLayout>

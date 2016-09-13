@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <!--底部导航-->
+    <color name="white">#ffffffff</color>
+    <color name="menu_btn_text_pressed">#168EFF</color>
+    <color name="menu_btn_text_normal">#777777</color>
+
+
+</resources>
