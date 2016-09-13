@@ -12,6 +12,7 @@ import com.smartydroid.android.starter.kit.model.entity.Entity;
 public class User extends Entity implements Account {
 
     public Integer ids;
+    public  String name;
 
     @Override
     public String token() {
@@ -39,10 +40,12 @@ public class User extends Entity implements Account {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeValue(this.ids);
+        dest.writeString(this.name);
     }
 
     protected User(Parcel in) {
         this.ids = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.name = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {

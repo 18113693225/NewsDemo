@@ -2,4 +2,57 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <!--padding-->
+    <dimen name="padding_5">5dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="padding_25">25dp</dimen>
+    <dimen name="padding_35">35dp</dimen>
+    <dimen name="padding_50">50dp</dimen>
+    <dimen name="padding_60">60dp</dimen>
+
+    <!--margin-->
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_15">15dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_25">25dp</dimen>
+    <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_35">35dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_45">45dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
+
+    <!--height-->
+    <dimen name="height_30">30dp</dimen>
+    <dimen name="height_40">40dp</dimen>
+    <dimen name="height_48">48dp</dimen>
+    <dimen name="height_50">50dp</dimen>
+    <dimen name="height_60">60dp</dimen>
+    <dimen name="height_72">72dp</dimen>
+    <dimen name="height_80">80dp</dimen>
+    <dimen name="height_100">100dp</dimen>
+    <dimen name="height_200">200dp</dimen>
+
+    <!--weight-->
+    <dimen name="weight_8">8dp</dimen>
+    <dimen name="weight_10">10dp</dimen>
+    <dimen name="weight_16">16dp</dimen>
+    <dimen name="weight_30">30dp</dimen>
+    <dimen name="weight_40">40dp</dimen>
+    <dimen name="weight_50">50dp</dimen>
+    <dimen name="weight_60">60dp</dimen>
+    <dimen name="weight_80">80dp</dimen>
+    <dimen name="weight_100">100dp</dimen>
+    <dimen name="weight_120">120dp</dimen>
+
+    <!--textSize-->
+    <dimen name="text_size_10">10sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
 </resources>

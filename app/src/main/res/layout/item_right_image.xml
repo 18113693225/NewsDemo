@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8">
+
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/weight_120"
+            android:layout_height="@dimen/height_100"
+            android:layout_alignParentRight="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_test" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="@dimen/margin_8"
+            android:layout_toLeftOf="@+id/image"
+            android:text="上海市梦创科技有限公司成立五年来，盈利七千万"
+            android:textColor="@color/title"
+            android:textSize="@dimen/text_size_16" />
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_5"
+        android:text="置顶 上海 政策 人才"
+        android:textColor="@color/table"
+        android:textSize="@dimen/text_size_14" />
+
+
+</LinearLayout>

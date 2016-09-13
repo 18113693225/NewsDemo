@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_horizontal_margin">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="上海市梦创科技有限公司"
+        android:textColor="@color/title"
+        android:textSize="@dimen/text_size_16" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_100"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_test" />
+
+        <View
+            android:layout_width="@dimen/weight_8"
+            android:layout_height="@dimen/height_100"
+            android:background="@color/white" />
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_100"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_test" />
+
+        <View
+            android:layout_width="@dimen/weight_8"
+            android:layout_height="@dimen/height_100"
+            android:background="@color/white" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_100"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            android:src="@drawable/bg_test" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_5"
+        android:text="置顶 上海 政策 人才"
+        android:textColor="@color/table"
+        android:textSize="@dimen/text_size_14" />
+
+
+</LinearLayout>
