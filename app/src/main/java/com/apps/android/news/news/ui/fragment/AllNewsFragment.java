@@ -1,6 +1,9 @@
 package com.apps.android.news.news.ui.fragment;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.apps.android.news.news.R;
@@ -10,6 +13,7 @@ import com.smartydroid.android.starter.kit.app.StarterPagedFragment;
 import java.util.ArrayList;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import support.ui.adapters.EasyRecyclerAdapter;
 
@@ -22,6 +26,18 @@ public class AllNewsFragment extends StarterPagedFragment<Table> {
     TextView textView;
     Bundle args;
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        args = getArguments();
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
     @Override
     public Call<ArrayList<Table>> paginate(int page, int perPage) {
         return null;
@@ -29,7 +45,7 @@ public class AllNewsFragment extends StarterPagedFragment<Table> {
 
     @Override
     public Object getKeyForData(Table item) {
-        return null;
+        return item.index;
     }
 
     @Override
