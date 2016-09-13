@@ -23,15 +23,15 @@ public class LauncherActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-//                if (NewsApp.isFirstEnterApp()) {
-//                    Navigator.startIntroActivity(LauncherActivity.this);//进入引导页
-//                    finish();
-//                } else {
-                Navigator.startMainActivity(LauncherActivity.this);
-                finish();
-            }
+                if (NewsApp.isFirstEnterApp()) {
+                    Navigator.startIntroActivity(LauncherActivity.this);//进入引导页
+                    finish();
+                } else {
+                    Navigator.startMainActivity(LauncherActivity.this);
+                    finish();
+                }
 
-            // }
+            }
         }, SPLASH_DISPLAY_LENGTH);
 
     }
