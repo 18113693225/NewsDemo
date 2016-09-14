@@ -51,13 +51,13 @@ public class DBCipherManager {
     /**
      * 插入数据
      */
-    public void insertData(String table, JSONObject data){
+    public void insertData(String table, JSONObject data) {
         //获取写数据库
         SQLiteDatabase db = dbHelper.getWritableDatabase(DBCipherHelper.DB_PWD);
         //生成要修改或者插入的键值
         ContentValues cv = new ContentValues();
         Iterator<String> keys = data.keys();
-        while(keys.hasNext()){
+        while (keys.hasNext()) {
             String key = keys.next();
             try {
                 cv.put(key, data.getString(key));
@@ -73,24 +73,25 @@ public class DBCipherManager {
 
     /**
      * 开启事务批量插入
+     *
      * @param table 表名
      * @param datas 数据
      */
-    public void insertDatasByTransaction(String table, JSONArray datas){
+    public void insertDatasByTransaction(String table, JSONArray datas) {
         //获取写数据库
         SQLiteDatabase db = dbHelper.getWritableDatabase(DBCipherHelper.DB_PWD);
         db.beginTransaction();  //手动设置开始事务
-        try{
+        try {
             //批量处理操作
             int count = datas.length();
             ContentValues cv = null;
             JSONObject data = null;
-            for(int i =0;i<count;i++ ){
+            for (int i = 0; i < count; i++) {
                 //生成要修改或者插入的键值
                 data = datas.getJSONObject(i);
                 cv = new ContentValues();
                 Iterator<String> keys = data.keys();
-                while(keys.hasNext()){
+                while (keys.hasNext()) {
                     String key = keys.next();
                     try {
                         cv.put(key, data.getString(key));
@@ -103,9 +104,9 @@ public class DBCipherManager {
                 Log.e(TAG, "insertDatasByTransaction");
             }
             db.setTransactionSuccessful(); //设置事务处理成功，不设置会自动回滚不提交
-        }catch(Exception e){
-            Log.e(TAG,e.getMessage());
-        }finally{
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
+        } finally {
             db.endTransaction(); //处理完成
             //关闭数据库
             db.close();
@@ -114,10 +115,11 @@ public class DBCipherManager {
 
     /**
      * 删除数据
+     *
      * @param table
      * @param where
      */
-    public void deleteData(String table,String where) {
+    public void deleteData(String table, String where) {
       /*  //生成条件语句
         StringBuffer whereBuffer = new StringBuffer();
         whereBuffer.append(DBCipherHelper.FIELD_NAME).append(" = ").append("'").append(name).append("'");
@@ -131,11 +133,11 @@ public class DBCipherManager {
 
     /**
      * 删除所有数据
-     * @param  table
+     *
+     * @param table
      */
-    public void deleteDatas(String table)
-    {
-        String sql="delete from "+table;
+    public void deleteDatas(String table) {
+        String sql = "delete from " + table;
         execSQL(sql);
     }
 
@@ -160,22 +162,22 @@ public class DBCipherManager {
     /**
      * 指定条件查询数据
      */
-    public JSONArray queryDatas(String sql){
+    public JSONArray queryDatas(String sql) {
         //获取可读数据库
         SQLiteDatabase db = dbHelper.getReadableDatabase(DBCipherHelper.DB_PWD);
         //查询数据库
         Cursor cursor = null;
         JSONArray array = new JSONArray();
         try {
-            cursor = db.rawQuery(sql,null);
+            cursor = db.rawQuery(sql, null);
             JSONObject data = null;
             while (cursor.moveToNext()) {
                 int count = cursor.getColumnCount();
                 data = new JSONObject();
-                for(int i=0;i<count;i++){
+                for (int i = 0; i < count; i++) {
                     String columName = cursor.getColumnName(i);
-                    String  value = cursor.getString(i);
-                    data.put(columName,value);
+                    String value = cursor.getString(i);
+                    data.put(columName, value);
                 }
                 array.put(data);
             }
@@ -197,7 +199,7 @@ public class DBCipherManager {
     /**
      * 查询全部数据
      */
-    public void queryDatas(){
+    public void queryDatas() {
       /*  //指定要查询的是哪几列数据
         String[] columns = {DBCipherHelper.FIELD_NAME};
         //获取可读数据库
@@ -226,7 +228,7 @@ public class DBCipherManager {
     /**
      * 执行sql语句
      */
-    private void execSQL(String sql){
+    private void execSQL(String sql) {
         //获取写数据库
         SQLiteDatabase db = dbHelper.getWritableDatabase(DBCipherHelper.DB_PWD);
         //直接执行sql语句

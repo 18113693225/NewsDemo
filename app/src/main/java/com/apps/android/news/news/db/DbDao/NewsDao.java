@@ -6,5 +6,4 @@ package com.apps.android.news.news.db.DbDao;
 public class NewsDao {
 
 
-
 }
