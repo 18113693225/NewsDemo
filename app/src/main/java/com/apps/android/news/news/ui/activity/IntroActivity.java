@@ -10,6 +10,7 @@ import com.apps.android.news.news.model.Base;
 import com.apps.android.news.news.model.Channels;
 import com.apps.android.news.news.utils.util.JsonUtils;
 import com.apps.android.news.news.utils.util.ParamUtils;
+import com.smartydroid.android.starter.kit.model.ErrorModel;
 import com.smartydroid.android.starter.kit.network.callback.MessageCallback;
 import com.smartydroid.android.starter.kit.utilities.NetworkUtils;
 
