@@ -10,8 +10,13 @@ import com.smartydroid.android.starter.kit.model.entity.Entity;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Table extends Entity {
+    public String id;
     public String name;
-    public Integer index;
+    public String orderId;
+    public String isSelected;
+
+    public Table() {
+    }
 
     @Override
     public int describeContents() {
@@ -20,16 +25,17 @@ public class Table extends Entity {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.id);
         dest.writeString(this.name);
-        dest.writeValue(this.index);
-    }
-
-    public Table() {
+        dest.writeString(this.orderId);
+        dest.writeString(this.isSelected);
     }
 
     protected Table(Parcel in) {
+        this.id = in.readString();
         this.name = in.readString();
-        this.index = (Integer) in.readValue(Integer.class.getClassLoader());
+        this.orderId = in.readString();
+        this.isSelected = in.readString();
     }
 
     public static final Creator<Table> CREATOR = new Creator<Table>() {

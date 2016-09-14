@@ -45,7 +45,7 @@ public class AllNewsFragment extends StarterPagedFragment<Table> {
 
     @Override
     public Object getKeyForData(Table item) {
-        return item.index;
+        return item.id;
     }
 
     @Override

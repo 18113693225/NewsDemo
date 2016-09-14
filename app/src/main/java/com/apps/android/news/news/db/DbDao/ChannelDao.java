@@ -58,13 +58,7 @@ public class ChannelDao {
      * 更新整个频道数据
      */
     public void updateChannels(JSONArray array) {
-        Call<User> user = ApiService.createTabService().Image("");
-        try {
-            Response<User> users = user.execute();
-            User u = users.body();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
     }
 
 
