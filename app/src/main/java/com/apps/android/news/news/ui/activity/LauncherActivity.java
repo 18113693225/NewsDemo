@@ -11,13 +11,12 @@ import com.apps.android.news.news.ui.app.NewsApp;
 
 
 public class LauncherActivity extends BaseActivity {
-    private static final int SPLASH_DISPLAY_LENGTH = 2000;
-    private boolean isHide;
+    private static final int SPLASH_DISPLAY_LENGTH = 1000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        isHide = true;
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         new Handler().postDelayed(new Runnable() {
@@ -30,7 +29,6 @@ public class LauncherActivity extends BaseActivity {
                     Navigator.startMainActivity(LauncherActivity.this);
                     finish();
                 }
-
             }
         }, SPLASH_DISPLAY_LENGTH);
 
@@ -39,14 +37,14 @@ public class LauncherActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        isHide = false;
+
 
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        isHide = true;
+
 
     }
 }

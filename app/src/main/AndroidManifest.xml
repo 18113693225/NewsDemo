@@ -3,12 +3,13 @@
     package="com.apps.android.news.news">
 
     <application
+        android:name=".ui.app.NewsApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <!--启动页-->
         <activity
             android:name=".ui.activity.LauncherActivity"
             android:screenOrientation="portrait">
@@ -17,11 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <!--主页-->
         <activity
             android:name=".ui.activity.MainActivity"
             android:screenOrientation="portrait" />
-
+        <!--引导页页-->
         <activity
             android:name=".ui.activity.IntroActivity"
             android:screenOrientation="portrait" />

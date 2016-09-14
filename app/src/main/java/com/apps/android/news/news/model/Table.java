@@ -2,11 +2,13 @@ package com.apps.android.news.news.model;
 
 import android.os.Parcel;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.smartydroid.android.starter.kit.model.entity.Entity;
 
 /**
  * Created by android on 2016/9/13.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Table extends Entity {
     public String name;
     public Integer index;

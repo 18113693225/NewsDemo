@@ -23,7 +23,6 @@ public class NewsApp extends StarterKitApp {
         return sContext;
     }
 
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -32,7 +31,6 @@ public class NewsApp extends StarterKitApp {
                 .baseUrl(BuildConfig.API_ENDPOINT)
                 .build();
     }
-
 
     @Override
     public Account accountFromJson(String json) {

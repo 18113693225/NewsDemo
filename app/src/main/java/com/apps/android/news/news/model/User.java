@@ -3,16 +3,18 @@ package com.apps.android.news.news.model;
 import android.os.Parcel;
 
 import com.apps.android.news.news.utils.util.JsonUtils;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.smartydroid.android.starter.kit.account.Account;
 import com.smartydroid.android.starter.kit.model.entity.Entity;
 
 /**
  * Created by android on 2016/9/13.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User extends Entity implements Account {
 
     public Integer ids;
-    public  String name;
+    public String name;
 
     @Override
     public String token() {
