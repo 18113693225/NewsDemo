@@ -9,10 +9,11 @@
     <color name="white">#ffffffff</color>
     <color name="menu_btn_text_pressed">#168EFF</color>
     <color name="menu_btn_text_normal">#777777</color>
-
     <!--字体颜色-->
     <color name="title">#282828</color>
     <color name="table">#777777</color>
-
+    <!--栏目选择-->
+    <color name="color_content">#757575</color>
+    <color name="features">#323232</color>
 
 </resources>

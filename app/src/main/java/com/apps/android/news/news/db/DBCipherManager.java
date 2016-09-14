@@ -28,6 +28,9 @@ public class DBCipherManager {
         dbHelper = new DBCipherHelper(context.getApplicationContext());
     }
 
+    public DBCipherHelper getDbHelper(){
+        return this.dbHelper;
+    }
     /**
      * 获取单例引用
      *

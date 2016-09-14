@@ -8,6 +8,12 @@
     <string name="myself">我的</string>
     <string name="add">添加</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--引导页-->
+    <string name="content">为了您获取更好的体验请选择你关注的栏目和地区</string>
+    <string name="features">专题栏目</string>
+    <string name="area">地区</string>
+    <string name="register">快速注册</string>
+    <string name="look">随便看看</string>
+
+
 </resources>

@@ -20,7 +20,7 @@ public interface TabService {
      */
     @FormUrlEncoded
     @POST("/dsfa/doMobilePost")
-    Call<Channels> AllTable(@Field("param") String param);
+    Call<Channels> AllTable(@Field("dreamsoft") String param);
 
     /**
      * 获取头部选项卡
