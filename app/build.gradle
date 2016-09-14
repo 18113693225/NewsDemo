@@ -29,6 +29,6 @@ dependencies {
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.github.paolorotolo:appintro:4.0.0'
     compile 'net.zetetic:android-database-sqlcipher:3.4.0'
-
+    compile 'info.hoang8f:fbutton:1.0.5'
 
 }

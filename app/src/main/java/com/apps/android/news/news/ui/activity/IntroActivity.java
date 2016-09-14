@@ -48,7 +48,7 @@ public class IntroActivity extends BaseActivity {
                 if (data.channels != null) {
                     cDao.initChannels(data.channels);
                 }
-              
+
             }
 
         });

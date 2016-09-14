@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -47,6 +48,43 @@
             android:text="上海市杨浦区"
             android:textColor="@color/color_content"
             android:textSize="@dimen/text_size_14" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20"
+        android:paddingLeft="@dimen/padding_5"
+        android:paddingRight="@dimen/padding_5">
+
+        <info.hoang8f.widget.FButton
+            android:layout_width="@dimen/weight_120"
+            android:layout_height="wrap_content"
+            android:text="@string/register"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_16"
+            fbutton:buttonColor="@color/color_bg_bt"
+            fbutton:cornerRadius="5dp"
+            fbutton:shadowColor="@color/color_bg_bt_shadow"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="1dp" />
+
+
+        <info.hoang8f.widget.FButton
+            android:layout_width="@dimen/weight_120"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/look"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_16"
+            fbutton:buttonColor="@color/color_bg_bt"
+            fbutton:cornerRadius="5dp"
+            fbutton:shadowColor="@color/color_bg_bt_shadow"
+            fbutton:shadowEnabled="true"
+            fbutton:shadowHeight="1dp" />
+
+
     </RelativeLayout>
 
 
