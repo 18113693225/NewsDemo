@@ -69,7 +69,6 @@ public class IntroActivity extends BaseActivity {
     }
 
     private void initView() {
-        Channels channels = cDao.getChannels();
-       // List<Channels> data = JsonUtils.get().toObjectList(json.toString(), Channels.class);
+        ArrayList<Table> data = cDao.getChannels();
     }
 }

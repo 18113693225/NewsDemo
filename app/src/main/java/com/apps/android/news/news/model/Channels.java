@@ -15,6 +15,7 @@ public class Channels extends Entity {
 
     public ArrayList<Table> channels;
 
+
     @Override
     public int describeContents() {
         return 0;

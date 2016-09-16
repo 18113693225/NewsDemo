@@ -30,8 +30,10 @@
                     android:gravity="bottom"
                     android:orientation="horizontal"
                     android:paddingLeft="10.0dip"
-                    android:paddingRight="10.0dip"></LinearLayout>
+                    android:paddingRight="10.0dip">
+                </LinearLayout>
             </com.apps.android.news.news.ui.widget.MenuHorizontalScrollView>
+
         </RelativeLayout>
 
         <LinearLayout

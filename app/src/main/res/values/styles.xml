@@ -30,7 +30,12 @@
     <style name="AppTheme.NoActionBar.Launcher">
         <item name="android:windowBackground">@drawable/bg_launcher</item>"
     </style>
+    <!--topMenu-->
+    <style name="top_menu_btn_text">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">@drawable/top_menu_btn_text</item>
 
-    <style name="Dialog" parent="Theme.AppCompat.Light.Dialog.Alert" />
+    </style>
+
 
 </resources>

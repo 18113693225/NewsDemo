@@ -41,7 +41,7 @@ public class ChannelDao {
      *
      * @return
      */
-    public Channels getUserChannels() {
+    public ArrayList<Table> getUserChannels() {
         return getChannels(SELECTED);
     }
 
@@ -50,7 +50,7 @@ public class ChannelDao {
      *
      * @return
      */
-    public Channels getChannels() {
+    public ArrayList<Table> getChannels() {
         return getChannels(null);
     }
 
@@ -99,7 +99,7 @@ public class ChannelDao {
         }
     }
 
-    private Channels getChannels(String selectedValue) {
+    private ArrayList<Table> getChannels(String selectedValue) {
 
         String sql = "select * from " + table;
         if (StringUtils.isNotBlank(selectedValue)) {
@@ -110,7 +110,6 @@ public class ChannelDao {
 
         //查询数据库
         Cursor cursor = null;
-        Channels channel = new Channels();
         ArrayList<Table> models = null;
         Table model = null;
         try {
@@ -124,7 +123,6 @@ public class ChannelDao {
                 model.isSelected = cursor.getString(cursor.getColumnIndex("isSelected"));
                 models.add(model);
             }
-            channel.channels = models;
             if (cursor != null) {
                 cursor.close();
             }
@@ -134,7 +132,7 @@ public class ChannelDao {
             //关闭数据库
             sdb.close();
         }
-        return channel;
+        return models;
     }
 
 

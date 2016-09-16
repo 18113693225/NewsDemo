@@ -17,8 +17,17 @@ public class Table extends Entity {
     public String isSelected;
     @JsonProperty("_ID")
     public String ID;
+    public int index;
 
     public Table() {
+    }
+
+    public void setIndex(int i) {
+        this.index = i;
+    }
+
+    public int getIndex() {
+        return index;
     }
 
     @Override
