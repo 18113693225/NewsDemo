@@ -30,5 +30,6 @@ dependencies {
     compile 'com.github.paolorotolo:appintro:4.0.0'
     compile 'net.zetetic:android-database-sqlcipher:3.4.0'
     compile 'info.hoang8f:fbutton:1.0.5'
+    compile 'com.kyleduo.switchbutton:library:1.4.4'
 
 }
