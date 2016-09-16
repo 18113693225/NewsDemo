@@ -25,7 +25,8 @@
         <!--主页-->
         <activity
             android:name=".ui.activity.MainActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <!--引导页-->
         <activity
             android:name=".ui.activity.IntroActivity"

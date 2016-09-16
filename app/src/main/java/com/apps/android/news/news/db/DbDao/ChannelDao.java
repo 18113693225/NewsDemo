@@ -92,7 +92,6 @@ public class ChannelDao {
                 cv.put("isSelected",t.isSelected);
                 // insert 操作
                 sdb.insert(table, null, cv);
-                Log.e(TAG, "insertDatasByTransaction");
             }
             sdb.setTransactionSuccessful(); //设置事务处理成功，不设置会自动回滚不提交
         } catch (Exception e) {

@@ -26,6 +26,12 @@
         android:textSize="@dimen/text_size_16" />
 
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/all_table_rc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_50">
