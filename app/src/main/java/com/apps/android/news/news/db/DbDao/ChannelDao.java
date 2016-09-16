@@ -4,24 +4,21 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.util.Log;
 
-import com.apps.android.news.news.api.ApiService;
 import com.apps.android.news.news.db.DBCipherHelper;
 import com.apps.android.news.news.db.DBCipherManager;
+import com.apps.android.news.news.model.Channels;
 import com.apps.android.news.news.model.Table;
-import com.apps.android.news.news.model.User;
+import com.apps.android.news.news.utils.util.StringUtils;
 
+import net.sqlcipher.Cursor;
+import net.sqlcipher.SQLException;
 import net.sqlcipher.database.SQLiteDatabase;
 
 import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.io.IOException;
-import java.util.Iterator;
+import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Response;
 
 /**
  * Created by Administrator on 2016/9/13.
@@ -44,8 +41,8 @@ public class ChannelDao {
      *
      * @return
      */
-    public JSONArray getUserChannels(){
-        return  db.queryDatas("select * from "+table+" where isSelected = '"+SELECTED+"'");
+    public Channels getUserChannels() {
+        return getChannels(SELECTED);
     }
 
     /**
@@ -53,9 +50,8 @@ public class ChannelDao {
      *
      * @return
      */
-
-    public JSONArray getChannels(){
-        return  db.queryDatas("select * from "+table);
+    public Channels getChannels() {
+        return getChannels(null);
     }
 
     /**
@@ -73,23 +69,23 @@ public class ChannelDao {
      * 更新整个频道数据
      */
     public void initChannels(List<Table> array) {
-        db.deleteDatas(table);
         //获取写数据库
         SQLiteDatabase sdb = db.getDbHelper().getWritableDatabase(DBCipherHelper.DB_PWD);
         sdb.beginTransaction(); //手动设置开始事务
+        db.deleteDatas(table);
         try {
             //批量处理操作
             int count = array.size();
             ContentValues cv = null;
-            Table t  = null;
+            Table t = null;
             for (int i = 0; i < count; i++) {
                 //生成要修改或者插入的键值
                 t = array.get(i);
                 cv = new ContentValues();
-                cv.put("id",t.id);
-                cv.put("name",t.name);
-                cv.put("orderId",t.orderId);
-                cv.put("isSelected",t.isSelected);
+                cv.put("id", t.id);
+                cv.put("name", t.name);
+                cv.put("orderId", t.orderId);
+                cv.put("isSelected", t.isSelected);
                 // insert 操作
                 sdb.insert(table, null, cv);
             }
@@ -101,6 +97,44 @@ public class ChannelDao {
             //关闭数据库
             sdb.close();
         }
+    }
+
+    private Channels getChannels(String selectedValue) {
+
+        String sql = "select * from " + table;
+        if (StringUtils.isNotBlank(selectedValue)) {
+            sql += "  where isSelected = '" + selectedValue + "'";
+        }
+        //获取可读数据库
+        SQLiteDatabase sdb = db.getDbHelper().getReadableDatabase(DBCipherHelper.DB_PWD);
+
+        //查询数据库
+        Cursor cursor = null;
+        Channels channel = new Channels();
+        ArrayList<Table> models = null;
+        Table model = null;
+        try {
+            cursor = sdb.rawQuery(sql, null);
+            models = new ArrayList<Table>();
+            while (cursor.moveToNext()) {
+                model = new Table();
+                model.id = cursor.getString(cursor.getColumnIndex("id"));
+                model.name = cursor.getString(cursor.getColumnIndex("name"));
+                model.orderId = cursor.getString(cursor.getColumnIndex("orderId"));
+                model.isSelected = cursor.getString(cursor.getColumnIndex("isSelected"));
+                models.add(model);
+            }
+            channel.channels = models;
+            if (cursor != null) {
+                cursor.close();
+            }
+        } catch (SQLException e) {
+            Log.e(TAG, "getUserChannels" + e.toString());
+        } finally {
+            //关闭数据库
+            sdb.close();
+        }
+        return channel;
     }
 
 

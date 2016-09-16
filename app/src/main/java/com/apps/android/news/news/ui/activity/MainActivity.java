@@ -33,19 +33,6 @@ public class MainActivity extends FragmentActivity {
     public static final int SHOW_MYSELF = 3;
     public static final int SHOW_ADD = 4;
 
-    //底部菜单
-    @Bind(R.id.fl_home)
-    FrameLayout menuHome;
-    @Bind(R.id.fl_business)
-    FrameLayout menuBusiness;
-    @Bind(R.id.fl_focus)
-    FrameLayout menuFocus;
-    @Bind(R.id.fl_myself)
-    FrameLayout menuMyself;
-    @Bind(R.id.fl_add)
-    FrameLayout menuAdd;
-
-
     //底部菜单图片
     @Bind(R.id.menu_img_home)
     ImageView imgHome;
@@ -82,12 +69,12 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        initFragment(SHOW_HOME);
     }
 
     private void initView() {
         ButterKnife.bind(this);
         restartButton();
+        initFragment(SHOW_HOME);
     }
 
     public void restartButton() {

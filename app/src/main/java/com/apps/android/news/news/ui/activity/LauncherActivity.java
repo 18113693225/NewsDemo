@@ -29,8 +29,8 @@ public class LauncherActivity extends BaseActivity {
                     Navigator.startIntroActivity(LauncherActivity.this);//进入引导页
                     finish();
                 } else {
-                    // Navigator.startMainActivity(LauncherActivity.this);
-                    Navigator.startIntroActivity(LauncherActivity.this);//进入引导页
+                    Navigator.startMainActivity(LauncherActivity.this);
+//                    Navigator.startIntroActivity(LauncherActivity.this);//进入引导页
                     finish();
                 }
             }

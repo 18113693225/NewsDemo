@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height_72"
+    android:background="@color/white">
+
+    <FrameLayout
+        android:id="@+id/menu_account_manager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0">
+
+        <ImageView
+            android:id="@+id/account_manager_iv"
+            android:layout_width="@dimen/weight_30"
+            android:layout_height="@dimen/height_30"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="@dimen/margin_8"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_account_manager" />
+
+        <TextView
+            android:id="@+id/account_manager_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:text="@string/account_manager"
+            android:textColor="@color/menu_btn_text_pressed"
+            android:textSize="@dimen/text_size_14" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/menu_enterprise_info"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0">
+
+        <ImageView
+            android:id="@+id/enterprise_info_iv"
+            android:layout_width="@dimen/weight_30"
+            android:layout_height="@dimen/height_30"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="@dimen/margin_8"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_enterprise_info_black" />
+
+        <TextView
+            android:id="@+id/enterprise_info_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:text="@string/enterprise_info"
+            android:textColor="@color/menu_btn_text_normal"
+            android:textSize="@dimen/text_size_14" />
+    </FrameLayout>
+
+
+    <FrameLayout
+        android:id="@+id/menu_application_set"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0">
+
+        <ImageView
+            android:id="@+id/application_set_iv"
+            android:layout_width="@dimen/weight_30"
+            android:layout_height="@dimen/height_30"
+            android:layout_gravity="top|center"
+            android:layout_marginTop="@dimen/margin_8"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/ic_application_set_black" />
+
+        <TextView
+            android:id="@+id/application_set_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="@dimen/margin_8"
+            android:text="@string/application_set"
+            android:textColor="@color/menu_btn_text_normal"
+            android:textSize="@dimen/text_size_14" />
+    </FrameLayout>
+
+</LinearLayout>

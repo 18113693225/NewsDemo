@@ -28,7 +28,7 @@
 
     <!--launcher-->
     <style name="AppTheme.NoActionBar.Launcher">
-        <item name="android:windowBackground">@drawable/bg_test</item>"
+        <item name="android:windowBackground">@drawable/bg_launcher</item>"
     </style>
 
     <style name="Dialog" parent="Theme.AppCompat.Light.Dialog.Alert" />

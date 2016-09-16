@@ -17,4 +17,7 @@
     <color name="features">#323232</color>
     <color name="color_bg_bt">#168fff</color>
     <color name="color_bg_bt_shadow">#389fff</color>
+    <!--myselfFragment-->
+    <color name="bg_myself">#f0f0f0</color>
+
 </resources>

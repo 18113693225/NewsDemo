@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class TableAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-private ArrayList mData;
+    private ArrayList mData;
 
     public TableAdapter() {
         mData = new ArrayList<>();
@@ -21,7 +21,6 @@ private ArrayList mData;
         mData.addAll(data);
         notifyDataSetChanged();
     }
-
 
 
     @Override

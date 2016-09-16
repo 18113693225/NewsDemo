@@ -14,6 +14,9 @@
     <string name="area">地区</string>
     <string name="register">快速注册</string>
     <string name="look">随便看看</string>
-
-
+    <!--我的-->
+    <string name="my_name">我的昵称</string>
+    <string name="account_manager">账户管理</string>
+    <string name="enterprise_info">企业信息</string>
+    <string name="application_set">应用设置</string>
 </resources>

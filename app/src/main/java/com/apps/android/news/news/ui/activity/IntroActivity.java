@@ -21,6 +21,7 @@ import com.smartydroid.android.starter.kit.utilities.NetworkUtils;
 import org.json.JSONArray;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
@@ -68,7 +69,7 @@ public class IntroActivity extends BaseActivity {
     }
 
     private void initView() {
-        JSONArray json = cDao.getChannels();
-        List<Channels> data = JsonUtils.get().toObjectList(json.toString(), Channels.class);
+        Channels channels = cDao.getChannels();
+       // List<Channels> data = JsonUtils.get().toObjectList(json.toString(), Channels.class);
     }
 }

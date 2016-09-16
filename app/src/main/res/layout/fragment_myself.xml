@@ -1,13 +1,51 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.MyselfFragment">
+    android:background="@color/bg_myself"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_200"
+        android:background="@drawable/bg_myself_top">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="@dimen/weight_80"
+                android:layout_height="@dimen/height_80"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_avator" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_5"
+                android:text="@string/my_name"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_16" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <include
+        layout="@layout/myself_navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_72" />
+
+    <FrameLayout
+        android:id="@+id/myself_fl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="hellow world" />
+        android:layout_marginTop="@dimen/margin_15" />
 
-</FrameLayout>
+
+</LinearLayout>
