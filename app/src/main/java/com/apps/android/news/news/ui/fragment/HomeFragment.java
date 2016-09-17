@@ -12,14 +12,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.apps.android.news.news.R;
-import com.apps.android.news.news.db.DbDao.ChannelDao;
-import com.apps.android.news.news.model.Channels;
+import com.apps.android.news.news.db.greendao.dao.LableManager;
+import com.apps.android.news.news.db.greendao.entity.Lable;
 import com.apps.android.news.news.model.Table;
 import com.apps.android.news.news.ui.adapter.NewsFragmentPagerAdapter;
 import com.apps.android.news.news.ui.widget.MenuHorizontalScrollView;
 import com.apps.android.news.news.utils.tool.WindowsTool;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -36,14 +37,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener, View
     @Bind(R.id.mViewPager)
     ViewPager mViewPager;
 
-    private ChannelDao cDao;
     ArrayList<Fragment> channelFragments;
     int mScreenWidth;//屏幕宽度
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        init();
+
     }
 
     @Override
@@ -55,29 +55,24 @@ public class HomeFragment extends Fragment implements View.OnClickListener, View
         return view;
     }
 
-    private void init() {
-        cDao = new ChannelDao(getActivity());
-    }
 
     public void initView() {
-        ArrayList<Table> channels = cDao.getUserChannels();
+        List<Lable> channels = LableManager.getInstance(getActivity()).getUserLables();
         mScreenWidth = WindowsTool.getWindowsWidth(this.getActivity());
-        int itemWidth = mScreenWidth / 7;
+        int itemWidth = mScreenWidth / 5;
         home_top_content.removeAllViews();
         channelFragments = new ArrayList<Fragment>();
         int size = channels.size();
         for (int i = 0; i < size; i++) {
-            Table channel = channels.get(i);
+            Lable channel = channels.get(i);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(itemWidth, LinearLayout.LayoutParams.MATCH_PARENT);
-            String title = channel.name;
-            params.leftMargin = 5;
-            params.rightMargin = 5;
+            String title = channel.getName();
             TextView itemTextView = new TextView(this.getActivity());
             itemTextView.setTextAppearance(getActivity(), R.style.top_menu_btn_text);
             itemTextView.setBackgroundResource(R.drawable.channe_bottom_border_selector);
             itemTextView.setText(title);
             itemTextView.setGravity(Gravity.CENTER);
-            itemTextView.setPadding(5, 5, 5, 5);
+            // itemTextView.setPadding(5, 5, 5, 5);
             if (i == 0) {
                 itemTextView.setSelected(true);
             }
@@ -86,7 +81,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, View
             itemTextView.setOnClickListener(this);
             home_top_content.addView(itemTextView, params);
             Bundle data = new Bundle();
-            data.putString("NAME", channel.name);
+            data.putString("NAME", channel.getName());
             AllNewsFragment newsFragment = new AllNewsFragment();
             newsFragment.setArguments(data);
             channelFragments.add(newsFragment);

@@ -45,10 +45,9 @@ dependencies {
     compile 'com.android.support:support-v4:24.0.0'
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.github.paolorotolo:appintro:4.0.0'
+    compile 'net.zetetic:android-database-sqlcipher:3.4.0'
     compile 'info.hoang8f:fbutton:1.0.5'
     compile 'ch.ielse:switchbutton:1.0.0'
-    compile 'com.nineoldandroids:library:2.4.0'
-    compile 'cn.bingoogolapple:bga-refreshlayout:1.0.7@aar'
     compile 'org.greenrobot:greendao:3.0.1'
     compile 'org.greenrobot:greendao-generator:3.0.0'
 

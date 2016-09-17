@@ -8,20 +8,13 @@ import android.util.Log;
 import com.apps.android.news.news.R;
 import com.apps.android.news.news.api.ApiService;
 import com.apps.android.news.news.api.service.TabService;
-import com.apps.android.news.news.db.DbDao.ChannelDao;
-import com.apps.android.news.news.model.Base;
+import com.apps.android.news.news.db.greendao.dao.LableManager;
+import com.apps.android.news.news.db.greendao.entity.Lable;
 import com.apps.android.news.news.model.Channels;
-import com.apps.android.news.news.model.Table;
-import com.apps.android.news.news.utils.util.JsonUtils;
 import com.apps.android.news.news.utils.util.ParamUtils;
-import com.smartydroid.android.starter.kit.model.ErrorModel;
 import com.smartydroid.android.starter.kit.network.callback.MessageCallback;
 import com.smartydroid.android.starter.kit.utilities.NetworkUtils;
 
-import org.json.JSONArray;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
@@ -33,7 +26,6 @@ import retrofit2.Call;
 public class IntroActivity extends BaseActivity {
     private NetworkUtils<Channels> mNetworkUtils;
     private TabService mTabService;
-    private ChannelDao cDao;
     @Bind(R.id.all_table_rc)
     public RecyclerView mRecyclerView;
 
@@ -54,7 +46,7 @@ public class IntroActivity extends BaseActivity {
             public void respondSuccess(Channels data) {
                 super.respondSuccess(data);
                 if (data.channels != null) {
-                    cDao.initChannels(data.channels);
+                    //cDao.initChannels(data.channels);
                 }
 
             }
@@ -65,10 +57,10 @@ public class IntroActivity extends BaseActivity {
 
     private void init() {
         mTabService = ApiService.createTabService();
-        cDao = new ChannelDao(this);
+        //cDao = new ChannelDao(this);
     }
 
     private void initView() {
-        ArrayList<Table> data = cDao.getChannels();
+        List<Lable> data = LableManager.getInstance(this).getLables();
     }
 }
