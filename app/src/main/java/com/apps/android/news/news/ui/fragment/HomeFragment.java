@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, View
             itemTextView.setOnClickListener(this);
             home_top_content.addView(itemTextView, params);
             Bundle data = new Bundle();
-            data.putString("NAME", channel.getName());
+            data.putString("ID", channel.getId());
             AllNewsFragment newsFragment = new AllNewsFragment();
             newsFragment.setArguments(data);
             channelFragments.add(newsFragment);

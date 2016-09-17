@@ -30,7 +30,9 @@
                     android:gravity="bottom"
                     android:orientation="horizontal"
                     android:paddingLeft="10.0dip"
-                    android:paddingRight="10.0dip"></LinearLayout>
+                    android:paddingRight="10.0dip">
+
+                </LinearLayout>
             </com.apps.android.news.news.ui.widget.MenuHorizontalScrollView>
 
         </RelativeLayout>
@@ -45,6 +47,7 @@
                 android:layout_width="40.0dip"
                 android:layout_height="40.0dip"
                 android:layout_gravity="center_vertical"
+                android:scaleType="centerCrop"
                 android:src="@drawable/menu_top_add_selector" />
         </LinearLayout>
     </LinearLayout>
@@ -59,5 +62,5 @@
         android:id="@+id/mViewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="52dp" />
+        android:layout_marginBottom="48dip" />
 </LinearLayout>

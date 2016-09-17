@@ -1,6 +1,7 @@
 package com.apps.android.news.news.ui.fragment;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,8 +14,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.apps.android.news.news.R;
+import com.apps.android.news.news.db.greendao.dao.NewsManager;
+import com.apps.android.news.news.db.greendao.entity.News;
 import com.apps.android.news.news.ui.adapter.CustomRecyclerViewAdapter;
 import com.apps.android.news.news.ui.widget.DefineBAGRefreshWithLoadView;
+import com.smartydroid.android.starter.kit.utilities.DividerItemDecoration;
+import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,26 +35,22 @@ import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARefreshLayoutDelegate {
     private Context mContext;
     public Bundle args;
+    public String id;
 
     @Bind(R.id.bga_rl)
     public BGARefreshLayout mBGARefreshLayout;
     @Bind(R.id.news_rv)
     public RecyclerView mRecyclerView;
-    // 数据
-    private List<String> mListData = new ArrayList<String>();
-    //一次加载数据的条数
-    private int DATASIZE = 10;
-    // 数据填充adapter
+    private List<News> AllNewsList = new ArrayList<News>();
+    private List<News> newsList;
     private CustomRecyclerViewAdapter mRecyclerViewAdapter = null;
-    // 设置一共请求多少次数据
-    private int ALLSUM = 0;
-    // 设置刷新和加载
     private DefineBAGRefreshWithLoadView mDefineBAGRefreshWithLoadView = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         args = getArguments();
+        id = args.getString("ID");
     }
 
     @Override
@@ -58,13 +59,10 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
         View view = inflater.inflate(R.layout.fragment_news, container, false);
         ButterKnife.bind(this, view);
         mContext = getActivity();
-        initView();
+        init();
         return view;
     }
 
-    /**
-     * 进入页面首次加载数据
-     */
     @Override
     public void onStart() {
         super.onStart();
@@ -73,79 +71,35 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
     }
 
 
-    private void initView() {
-        //设置刷新和加载监听
+    private void init() {
         mBGARefreshLayout.setDelegate(this);
         setBgaRefreshLayout();
         setRecyclerView();
     }
 
-    /**
-     * 设置 BGARefreshLayout刷新和加载
-     */
+    private void getNews(String id, String time) {
+        newsList = NewsManager.getInstance(getActivity()).getNewsByLable(id, time);
+        setRecyclerCommAdapt();
+    }
+
     private void setBgaRefreshLayout() {
         mDefineBAGRefreshWithLoadView = new DefineBAGRefreshWithLoadView(mContext, true, true);
-        //设置刷新样式
         mBGARefreshLayout.setRefreshViewHolder(mDefineBAGRefreshWithLoadView);
         mDefineBAGRefreshWithLoadView.updateLoadingMoreText("自定义加载更多");
     }
 
-    /**
-     * 设置RecyclerView的布局方式
-     */
+
     private void setRecyclerView() {
-        //垂直listview显示方式
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
+//        mRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getContext()
+//        ).size(10).color(Color.TRANSPARENT).build());
+
     }
 
-    /**
-     * 模拟请求网络数据
-     */
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what) {
-                case 0:
-                    mListData.clear();
-                    setData();
-                    mBGARefreshLayout.endRefreshing();
-                    break;
-                case 1:
-                    setData();
-                    mBGARefreshLayout.endLoadingMore();
-                    break;
-                case 2:
-                    mBGARefreshLayout.endLoadingMore();
-                    break;
-                default:
-                    break;
 
-            }
-        }
-    };
-
-    /**
-     * 添加假数据
-     */
-    private void setData() {
-        for (int i = 0; i < DATASIZE; i++) {
-            mListData.add("第" + (ALLSUM * 10 + i) + "条数据");
-        }
-        if (ALLSUM == 0) {
-            setRecyclerCommadapter();
-        } else {
-            mRecyclerViewAdapter.notifyDataSetChanged();
-        }
-    }
-
-    /**
-     * 数据填充
-     */
-    private void setRecyclerCommadapter() {
-        mRecyclerViewAdapter = new CustomRecyclerViewAdapter(mContext, mListData);
+    private void setRecyclerCommAdapt() {
+        mRecyclerViewAdapter = new CustomRecyclerViewAdapter(mContext, AllNewsList);
         mRecyclerView.setAdapter(mRecyclerViewAdapter);
-        //点击事件
         mRecyclerViewAdapter.setOnItemClickListener(new CustomRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
@@ -154,32 +108,28 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
         });
     }
 
-    /**
-     * 刷新
-     */
+
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
-        mDefineBAGRefreshWithLoadView.updateLoadingMoreText("自定义加载更多");
-        mDefineBAGRefreshWithLoadView.showLoadingMoreImg();
-        ALLSUM = 0;
-        handler.sendEmptyMessageDelayed(0, 2000);
+        AllNewsList.clear();
+        getNews(id, null);
+        AllNewsList.addAll(newsList);
+        mBGARefreshLayout.endRefreshing();
     }
 
-    /**
-     * 加载
-     */
+
     @Override
     public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
-        if (ALLSUM == 2) {
-            /** 设置文字 **/
+        getNews(id, newsList.get(newsList.size() - 1).getAuditDate());
+        if (null == newsList) {
             mDefineBAGRefreshWithLoadView.updateLoadingMoreText("没有更多数据");
-            /** 隐藏图片 **/
             mDefineBAGRefreshWithLoadView.hideLoadingMoreImg();
-            handler.sendEmptyMessageDelayed(2, 2000);
+            mBGARefreshLayout.endLoadingMore();
             return true;
+        } else {
+            AllNewsList.addAll(newsList);
+            mBGARefreshLayout.endLoadingMore();
         }
-        ALLSUM++;
-        handler.sendEmptyMessageDelayed(1, 2000);
         return true;
     }
 
