@@ -110,7 +110,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener, View
 
     @Override
     public void onClick(View view) {
-        Table channel = (Table) view.getTag();
+        Lable channel = (Lable) view.getTag();
         mViewPager.setCurrentItem(channel.getIndex());
     }
 

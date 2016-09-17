@@ -30,8 +30,7 @@
                     android:gravity="bottom"
                     android:orientation="horizontal"
                     android:paddingLeft="10.0dip"
-                    android:paddingRight="10.0dip">
-                </LinearLayout>
+                    android:paddingRight="10.0dip"></LinearLayout>
             </com.apps.android.news.news.ui.widget.MenuHorizontalScrollView>
 
         </RelativeLayout>
@@ -59,5 +58,6 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/mViewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="52dp" />
 </LinearLayout>

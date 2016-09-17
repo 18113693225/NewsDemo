@@ -7,18 +7,17 @@
     <cn.bingoogolapple.refreshlayout.BGARefreshLayout
         android:id="@+id/bga_rl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="52dp">
+        android:layout_height="match_parent">
 
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/news_rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:padding="5dp"
-            android:scrollbars="none">
+            android:scrollbars="none" />
 
-        </android.support.v7.widget.RecyclerView>
     </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
 
 </LinearLayout>
