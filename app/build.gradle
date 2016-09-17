@@ -1,21 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 
-
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'org.greenrobot:greendao-gradle-plugin:3.0.0'
-    }
-}
-
-greendao {
-    schemaVersion 1
-    daoPackage 'com.apps.android.news.news.db.greendao.gen'
-    targetGenDir 'src/main/java'
-}
 android {
     compileSdkVersion 24
     buildToolsVersion "24.0.0"
@@ -34,8 +19,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
 }
 
+greendao {
+    schemaVersion 1
+    daoPackage 'com.apps.android.news.news.db.greendao.gen'
+    targetGenDir 'src/main/java'
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
