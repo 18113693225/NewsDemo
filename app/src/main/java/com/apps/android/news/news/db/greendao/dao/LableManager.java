@@ -32,6 +32,10 @@ public class LableManager {
         return mInstance;
     }
 
+    /**
+     * 获取用户频道
+     * @return
+     */
     public List<Lable> getUserLables(){
         List<Lable> userList = lableDao.queryBuilder()
                                        .where(LableDao.Properties.IsSelected.eq("1"))
@@ -39,6 +43,10 @@ public class LableManager {
         return userList;
     }
 
+    /**
+     * 获取所有频道
+     * @return
+     */
     public List<Lable> getLables(){
         return lableDao.queryBuilder().list();
     }

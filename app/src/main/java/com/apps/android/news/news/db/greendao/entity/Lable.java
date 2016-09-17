@@ -14,11 +14,11 @@ import java.util.List;
 @Entity
 public class Lable {
     @Id
-    private Long _id;
-    private String id;
-    private String name;
-    private String orderId;
-    private String isSelected;
+    private Long _id;//主键
+    private String id;//频道ID
+    private String name;//频道名称
+    private String orderId;//排序标识
+    private String isSelected;//是否选中  0、否 1、是
 
     @Transient
     public int index;

@@ -6,6 +6,7 @@ import android.support.multidex.MultiDex;
 import com.apps.android.news.news.BuildConfig;
 import com.apps.android.news.news.db.DBManager;
 import com.apps.android.news.news.db.greendao.dao.LableManager;
+import com.apps.android.news.news.db.greendao.dao.NewsManager;
 import com.apps.android.news.news.db.greendao.entity.Lable;
 import com.apps.android.news.news.db.greendao.gen.LableDao;
 import com.apps.android.news.news.model.User;
@@ -38,11 +39,12 @@ public class NewsApp extends StarterKitApp {
                 .baseUrl(BuildConfig.API_ENDPOINT)
                 .build();
         DBManager.getInstance(appContext());
-        initTestLable();
+        initTestData();
     }
 
-    private void initTestLable() {//初始化频道测试数据
+    private void initTestData() {//初始化测试数据
         LableManager.getInstance(appContext()).initTestData();
+        NewsManager.getInstance(appContext()).initTestData();
     }
 
     @Override
