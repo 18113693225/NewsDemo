@@ -11,7 +11,7 @@ android {
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
-        buildConfigField("String", "API_ENDPOINT", "\"http://192.168.2.110:8080\"")
+        buildConfigField("String", "API_ENDPOINT", "\"http://192.168.2.110:8081\"")
     }
     buildTypes {
         release {

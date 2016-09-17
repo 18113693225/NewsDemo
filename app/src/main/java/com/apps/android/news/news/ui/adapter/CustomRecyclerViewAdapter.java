@@ -45,7 +45,8 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
     //绑定ViewHolder
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
-
+        TextView text = (TextView) holder.itemView.findViewById(R.id.text);
+        text.setText(mListData.get(position));
         setOnListener(holder);
     }
 
@@ -69,11 +70,10 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView mTextView;
-        String name;
+
         public ViewHolder(View itemView) {
             super(itemView);
-            mTextView = (TextView) itemView.findViewById(R.id.text);
+
         }
     }
 }
