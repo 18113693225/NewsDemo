@@ -8,6 +8,7 @@ import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +59,6 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_news, container, false);
         ButterKnife.bind(this, view);
-        mContext = getActivity();
         init();
         return view;
     }
@@ -72,27 +72,28 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
 
 
     private void init() {
+        mContext = getActivity();
         mBGARefreshLayout.setDelegate(this);
         setBgaRefreshLayout();
         setRecyclerView();
+        setRecyclerCommAdapt();
     }
 
     private void getNews(String id, String time) {
         newsList = NewsManager.getInstance(getActivity()).getNewsByLable(id, time);
-        setRecyclerCommAdapt();
     }
 
     private void setBgaRefreshLayout() {
         mDefineBAGRefreshWithLoadView = new DefineBAGRefreshWithLoadView(mContext, true, true);
         mBGARefreshLayout.setRefreshViewHolder(mDefineBAGRefreshWithLoadView);
-        mDefineBAGRefreshWithLoadView.updateLoadingMoreText("自定义加载更多");
+        mDefineBAGRefreshWithLoadView.updateLoadingMoreText("加载更多");
     }
 
 
     private void setRecyclerView() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
-//        mRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getContext()
-//        ).size(10).color(Color.TRANSPARENT).build());
+        mRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getContext()
+        ).size(1).color(Color.TRANSPARENT).build());
 
     }
 
@@ -114,23 +115,55 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
         AllNewsList.clear();
         getNews(id, null);
         AllNewsList.addAll(newsList);
-        mBGARefreshLayout.endRefreshing();
+        handler.sendEmptyMessageDelayed(0, 2000);
     }
 
 
     @Override
     public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
-        getNews(id, newsList.get(newsList.size() - 1).getAuditDate());
-        if (null == newsList) {
-            mDefineBAGRefreshWithLoadView.updateLoadingMoreText("没有更多数据");
-            mDefineBAGRefreshWithLoadView.hideLoadingMoreImg();
-            mBGARefreshLayout.endLoadingMore();
-            return true;
-        } else {
-            AllNewsList.addAll(newsList);
-            mBGARefreshLayout.endLoadingMore();
+        try {
+            String time = newsList.get(newsList.size() - 1).getAuditDate();
+            if (null == time || "".equals(time)) {
+                return false;
+            } else {
+                getNews(id, time);
+                if (newsList.size() == 0) {
+                    mDefineBAGRefreshWithLoadView.updateLoadingMoreText("没有更多数据");
+                    mDefineBAGRefreshWithLoadView.hideLoadingMoreImg();
+                    handler.sendEmptyMessageDelayed(2, 1000);
+                    return true;
+                } else {
+                    AllNewsList.addAll(newsList);
+                    handler.sendEmptyMessageDelayed(1, 1000);
+                }
+            }
+        } catch (Exception e) {
+            Log.i("TAG", "null");
         }
         return true;
     }
 
+    /**
+     * 模拟请求网络数据
+     */
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case 0:
+                    mBGARefreshLayout.endRefreshing();
+                    break;
+                case 1:
+                    mBGARefreshLayout.endLoadingMore();
+                    break;
+                case 2:
+                    mBGARefreshLayout.endLoadingMore();
+                    break;
+                default:
+                    break;
+
+            }
+        }
+    };
 }
