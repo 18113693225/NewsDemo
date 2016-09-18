@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -12,6 +13,7 @@ import com.apps.android.news.news.R;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
 import butterknife.OnClick;
 import mediapicker.MediaOptions;
 import mediapicker.MediaItem;
@@ -27,6 +29,8 @@ public class CertificationActivity extends BaseActivity {
     public static final int REQUEST_MEDIA = 100;
     public ArrayList<MediaItem> mMediaSelectedList = new ArrayList<>();
     public String name;
+    @Bind(R.id.account_info_tv)
+    TextView accountName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +52,7 @@ public class CertificationActivity extends BaseActivity {
             case R.id.info_rl:
                 showChangeNameDialog();
                 break;
-            case R.id.image1:
+            case R.id.image_rl:
                 showMediaPicker();
                 break;
             case R.id.area_rl:
@@ -80,7 +84,7 @@ public class CertificationActivity extends BaseActivity {
                 .setMediaListSelected(mMediaSelectedList)
                 .setImageSize(1)
                 .build();
-        open(this, REQUEST_MEDIA, options, false);
+        open(CertificationActivity.this, REQUEST_MEDIA, options, false);
     }
 
 
@@ -106,6 +110,7 @@ public class CertificationActivity extends BaseActivity {
                             ToastUtils.toast(CertificationActivity.this, "账户信息长度不能大于8个字符");
                         } else {
                             name = dialog.getInputEditText().getText().toString();
+                            accountName.setText(name);
                             dialog.dismiss();
                         }
                     }
