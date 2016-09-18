@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.ActivityCompat;
 
+import com.apps.android.news.news.ui.activity.CertificationActivity;
+import com.apps.android.news.news.ui.activity.DoorActivity;
+import com.apps.android.news.news.ui.activity.InfoActivity;
 import com.apps.android.news.news.ui.activity.IntroActivity;
 import com.apps.android.news.news.ui.activity.MainActivity;
 import com.apps.android.news.news.ui.activity.NewsDetailSActivity;
@@ -38,4 +41,29 @@ public final class Navigator {
         intent.putExtra("url", url);
         ActivityCompat.startActivity(activity, intent, null);
     }
+
+    /**
+     * 跳转到企业认证
+     */
+    public static void startCertificationActivity(Activity activity) {
+        Intent intent = new Intent(activity, CertificationActivity.class);
+        ActivityCompat.startActivity(activity, intent, null);
+    }
+
+    /**
+     * 跳转到信息维护
+     */
+    public static void startInfoActivity(Activity activity) {
+        Intent intent = new Intent(activity, InfoActivity.class);
+        ActivityCompat.startActivity(activity, intent, null);
+    }
+
+    /**
+     * 跳转到微门户
+     */
+    public static void startDoorActivity(Activity activity) {
+        Intent intent = new Intent(activity, DoorActivity.class);
+        ActivityCompat.startActivity(activity, intent, null);
+    }
+
 }

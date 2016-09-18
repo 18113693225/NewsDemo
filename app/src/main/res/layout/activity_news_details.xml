@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
 
         <ProgressBar
@@ -27,5 +28,9 @@
             android:layout_below="@id/prgBar" />
 
     </RelativeLayout>
+
+
+    <include layout="@layout/custom_bottom_view" />
+
 
 </LinearLayout>

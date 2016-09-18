@@ -43,6 +43,37 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.activity.MainActivity" />
         </activity>
+        <!--企业认证-->
+        <activity
+            android:name=".ui.activity.CertificationActivity"
+            android:label="企业认证"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activity.MainActivity" />
+        </activity>
+        <!--信息维护-->
+        <activity
+            android:name=".ui.activity.InfoActivity"
+            android:label="信息维护"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activity.MainActivity" />
+        </activity>
+        <!--微门户-->
+        <activity
+            android:name=".ui.activity.DoorActivity"
+            android:label="微门户"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activity.MainActivity" />
+        </activity>
+
     </application>
 
 </manifest>

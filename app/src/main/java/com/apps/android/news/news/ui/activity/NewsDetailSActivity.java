@@ -3,6 +3,7 @@ package com.apps.android.news.news.ui.activity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -31,6 +32,18 @@ public class NewsDetailSActivity extends BaseActivity {
         initView();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            if (mWebView.canGoBack()) {
+                mWebView.goBack();
+            } else {
+                finish();
+            }
+
+        }
+        return true;
+    }
 
     @SuppressLint("SetJavaScriptEnabled")
     private void initView() {

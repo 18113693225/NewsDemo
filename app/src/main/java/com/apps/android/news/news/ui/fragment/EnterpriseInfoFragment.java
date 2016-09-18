@@ -6,7 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.apps.android.news.news.Navigator;
 import com.apps.android.news.news.R;
+
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by android on 2016/9/16.
@@ -21,7 +25,27 @@ public class EnterpriseInfoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_enterprise_info, container, false);
+        View view = inflater.inflate(R.layout.fragment_enterprise_info, container, false);
+        ButterKnife.bind(this, view);
+        return view;
     }
+
+    @OnClick({R.id.certification_rl, R.id.info_rl, R.id.door_rl})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.certification_rl:
+                Navigator.startCertificationActivity(getActivity());
+                break;
+            case R.id.info_rl:
+                Navigator.startInfoActivity(getActivity());
+                break;
+            case R.id.door_rl:
+                Navigator.startDoorActivity(getActivity());
+                break;
+            default:
+                break;
+        }
+    }
+
+
 }
