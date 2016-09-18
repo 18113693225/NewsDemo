@@ -27,7 +27,7 @@
             android:layout_height="@dimen/height_100"
             android:layout_weight="1"
             android:scaleType="centerCrop"
-            android:src="@drawable/bg_launcher" />
+            android:src="@mipmap/ic_err_small" />
 
         <View
             android:layout_width="@dimen/weight_8"
@@ -41,7 +41,7 @@
             android:layout_height="@dimen/height_100"
             android:layout_weight="1"
             android:scaleType="centerCrop"
-            android:src="@drawable/bg_launcher" />
+            android:src="@mipmap/ic_err_small" />
 
         <View
             android:layout_width="@dimen/weight_8"
@@ -54,7 +54,7 @@
             android:layout_height="@dimen/height_100"
             android:layout_weight="1"
             android:scaleType="centerCrop"
-            android:src="@drawable/bg_launcher" />
+            android:src="@mipmap/ic_err_small" />
 
     </LinearLayout>
 

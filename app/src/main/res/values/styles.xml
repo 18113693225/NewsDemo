@@ -34,7 +34,6 @@
     <style name="top_menu_btn_text">
         <item name="android:textSize">16.0sp</item>
         <item name="android:textColor">@drawable/top_menu_btn_text</item>
-
     </style>
 
 

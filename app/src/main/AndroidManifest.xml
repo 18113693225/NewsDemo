@@ -32,6 +32,17 @@
             android:name=".ui.activity.IntroActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <!--新闻详情页-->
+        <activity
+            android:name=".ui.activity.NewsDetailSActivity"
+            android:label="News"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.activity.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

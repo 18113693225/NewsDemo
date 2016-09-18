@@ -65,6 +65,7 @@
         android:paddingRight="@dimen/padding_5">
 
         <info.hoang8f.widget.FButton
+            android:id="@+id/register_bt"
             android:layout_width="@dimen/weight_120"
             android:layout_height="wrap_content"
             android:text="@string/register"
@@ -78,6 +79,7 @@
 
 
         <info.hoang8f.widget.FButton
+            android:id="@+id/look_bt"
             android:layout_width="@dimen/weight_120"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

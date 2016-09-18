@@ -21,7 +21,7 @@
         android:layout_height="@dimen/height_200"
         android:layout_marginTop="@dimen/margin_8"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg_launcher" />
+        android:src="@mipmap/ic_err_big" />
 
     <TextView
         android:id="@+id/label_tv"

@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apps.android.news.news.Navigator;
 import com.apps.android.news.news.R;
 import com.apps.android.news.news.db.greendao.dao.NewsManager;
 import com.apps.android.news.news.db.greendao.entity.News;
@@ -106,7 +107,7 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
         mRecyclerViewAdapter.setOnItemClickListener(new CustomRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Toast.makeText(mContext, "onclick  " + position, Toast.LENGTH_SHORT).show();
+                Navigator.startNewsDetailsActivity(getActivity(), AllNewsList.get(position).getUrl());
             }
         });
     }

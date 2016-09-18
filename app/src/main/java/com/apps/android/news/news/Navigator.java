@@ -6,6 +6,7 @@ import android.support.v4.app.ActivityCompat;
 
 import com.apps.android.news.news.ui.activity.IntroActivity;
 import com.apps.android.news.news.ui.activity.MainActivity;
+import com.apps.android.news.news.ui.activity.NewsDetailSActivity;
 
 /**
  * Created by android on 2016/9/13.
@@ -29,4 +30,12 @@ public final class Navigator {
         ActivityCompat.startActivity(activity, intent, null);
     }
 
+    /**
+     * 跳转到新闻详情页
+     */
+    public static void startNewsDetailsActivity(Activity activity, String url) {
+        Intent intent = new Intent(activity, NewsDetailSActivity.class);
+        intent.putExtra("url", url);
+        ActivityCompat.startActivity(activity, intent, null);
+    }
 }

@@ -4,7 +4,9 @@ package com.apps.android.news.news.ui.activity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 
+import com.apps.android.news.news.Navigator;
 import com.apps.android.news.news.R;
 import com.apps.android.news.news.api.ApiService;
 import com.apps.android.news.news.api.service.TabService;
@@ -18,6 +20,8 @@ import com.smartydroid.android.starter.kit.utilities.NetworkUtils;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.OnClick;
+import info.hoang8f.widget.FButton;
 import retrofit2.Call;
 
 /**
@@ -28,6 +32,7 @@ public class IntroActivity extends BaseActivity {
     private TabService mTabService;
     @Bind(R.id.all_table_rc)
     public RecyclerView mRecyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,10 +62,26 @@ public class IntroActivity extends BaseActivity {
 
     private void init() {
         mTabService = ApiService.createTabService();
-        //cDao = new ChannelDao(this);
     }
 
     private void initView() {
         List<Lable> data = LableManager.getInstance(this).getLables();
     }
+
+
+    @OnClick({R.id.register_bt, R.id.look_bt})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.register_bt:
+                break;
+            case R.id.look_bt:
+                Navigator.startMainActivity(IntroActivity.this);
+                finish();
+                break;
+            default:
+                break;
+        }
+    }
+
+
 }

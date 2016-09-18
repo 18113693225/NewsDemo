@@ -19,7 +19,7 @@
             android:layout_height="@dimen/height_100"
             android:layout_alignParentRight="true"
             android:scaleType="centerCrop"
-            android:src="@drawable/bg_launcher" />
+            android:src="@mipmap/ic_err_small" />
 
         <TextView
             android:id="@+id/title"

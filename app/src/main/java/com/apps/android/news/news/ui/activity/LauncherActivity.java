@@ -18,7 +18,6 @@ public class LauncherActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         new Handler().postDelayed(new Runnable() {
@@ -30,7 +29,6 @@ public class LauncherActivity extends BaseActivity {
                     finish();
                 } else {
                     Navigator.startMainActivity(LauncherActivity.this);
-//                    Navigator.startIntroActivity(LauncherActivity.this);//进入引导页
                     finish();
                 }
             }
