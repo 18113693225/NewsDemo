@@ -5,6 +5,9 @@
     android:background="@color/bg_myself"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/custom_toolbar" />
 
     <RelativeLayout
         android:layout_width="match_parent"

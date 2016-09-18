@@ -16,10 +16,10 @@
 
     <!--toolBar-->
     <style name="ToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="actionMenuTextColor">@color/white</item>
+        <item name="actionMenuTextColor">@color/color_content</item>
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/bg_myself</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:layout_alignParentStart">@dimen/margin_10</item>
