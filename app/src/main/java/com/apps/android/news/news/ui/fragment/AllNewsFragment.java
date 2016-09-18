@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apps.android.news.news.R;
@@ -19,11 +20,13 @@ import com.apps.android.news.news.db.greendao.dao.NewsManager;
 import com.apps.android.news.news.db.greendao.entity.News;
 import com.apps.android.news.news.ui.adapter.CustomRecyclerViewAdapter;
 import com.apps.android.news.news.ui.widget.DefineBAGRefreshWithLoadView;
+import com.apps.android.news.news.ui.widget.EmptyRecyclerView;
 import com.smartydroid.android.starter.kit.utilities.DividerItemDecoration;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.Inflater;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -94,7 +97,6 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.addItemDecoration(new HorizontalDividerItemDecoration.Builder(getContext()
         ).size(1).color(Color.TRANSPARENT).build());
-
     }
 
 
@@ -122,11 +124,9 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
     @Override
     public boolean onBGARefreshLayoutBeginLoadingMore(BGARefreshLayout refreshLayout) {
         try {
-            String time = newsList.get(newsList.size() - 1).getAuditDate();
-            if (null == time || "".equals(time)) {
-                return false;
-            } else {
-                getNews(id, time);
+            if (newsList.size() != 0) {
+                String time = newsList.get(newsList.size() - 1).getAuditDate();
+                //        getNews(id, time);
                 if (newsList.size() == 0) {
                     mDefineBAGRefreshWithLoadView.updateLoadingMoreText("没有更多数据");
                     mDefineBAGRefreshWithLoadView.hideLoadingMoreImg();
@@ -134,9 +134,14 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
                     return true;
                 } else {
                     AllNewsList.addAll(newsList);
-                    handler.sendEmptyMessageDelayed(1, 1000);
+                    handler.sendEmptyMessageDelayed(1, 500);
                 }
+            } else {
+                mDefineBAGRefreshWithLoadView.updateLoadingMoreText("没有更多数据");
+                mDefineBAGRefreshWithLoadView.hideLoadingMoreImg();
+                handler.sendEmptyMessageDelayed(2, 500);
             }
+
         } catch (Exception e) {
             Log.i("TAG", "null");
         }

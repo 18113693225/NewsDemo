@@ -5,6 +5,7 @@
     android:background="@color/bg_myself"
     android:orientation="vertical">
 
+
     <cn.bingoogolapple.refreshlayout.BGARefreshLayout
         android:id="@+id/bga_rl"
         android:layout_width="match_parent"
@@ -19,5 +20,6 @@
             android:scrollbars="none" />
 
     </cn.bingoogolapple.refreshlayout.BGARefreshLayout>
+
 
 </LinearLayout>

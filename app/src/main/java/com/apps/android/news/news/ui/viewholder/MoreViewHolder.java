@@ -25,9 +25,7 @@ public class MoreViewHolder extends EasyViewHolder<News> {
     ImageView image2;
     @Bind(R.id.image3)
     ImageView image3;
-
     @Bind(R.id.label_tv)
-
     TextView label;
 
     public MoreViewHolder(Context context, ViewGroup parent) {

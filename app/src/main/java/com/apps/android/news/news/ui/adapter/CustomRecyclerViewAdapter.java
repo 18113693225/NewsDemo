@@ -2,12 +2,9 @@ package com.apps.android.news.news.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.apps.android.news.news.R;
 import com.apps.android.news.news.db.greendao.entity.News;
 import com.apps.android.news.news.ui.viewholder.BigImageViewHolder;
 import com.apps.android.news.news.ui.viewholder.MoreViewHolder;
