@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_myself"
+
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/custom_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:layout_margin="@dimen/margin_16"
+        android:background="@drawable/round_border"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/padding_10"
+        android:paddingRight="@dimen/padding_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="手机号"
+            android:textColor="@color/color_content"
+            android:textSize="@dimen/text_size_18" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:background="@android:color/transparent"
+            android:hint="请输入手机号"
+            android:inputType="number"
+            android:maxLength="11"
+            android:textColor="@color/color_content"
+            android:textSize="@dimen/text_size_16" />
+    </LinearLayout>
+
+
+    <support.ui.components.SupportButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginRight="@dimen/margin_16"
+        android:gravity="center_horizontal"
+        android:text="发送验证码"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_20"
+        app:supportButtonCornerRadius="8dp"
+        app:supportButtonNormalColor="@color/color_bg_bt"
+        app:supportButtonRippleColor="@color/color_bg_bt_shadow" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:layout_margin="@dimen/margin_16"
+        android:background="@drawable/round_border"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/padding_10"
+        android:paddingRight="@dimen/padding_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="验证码"
+            android:textColor="@color/color_content"
+            android:textSize="@dimen/text_size_18" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:background="@android:color/transparent"
+            android:hint="请输入验证码"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textColor="@color/color_content"
+            android:textSize="@dimen/text_size_16" />
+    </LinearLayout>
+
+    <support.ui.components.SupportButton
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginRight="@dimen/margin_16"
+        android:gravity="center_horizontal"
+        android:text="下一步"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_20"
+        app:supportButtonCornerRadius="8dp"
+        app:supportButtonNormalColor="@color/color_bg_bt"
+        app:supportButtonRippleColor="@color/color_bg_bt_shadow" />
+
+</LinearLayout>

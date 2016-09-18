@@ -53,7 +53,6 @@
         <!--新闻详情页-->
         <activity
             android:name=".ui.activity.NewsDetailSActivity"
-            android:label="News"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
@@ -87,6 +86,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.activity.MainActivity" />
         </activity>
+
+        <!--注册-->
+        <activity
+            android:name=".ui.activity.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
 
     </application>
 

@@ -10,6 +10,7 @@ import com.apps.android.news.news.ui.activity.InfoActivity;
 import com.apps.android.news.news.ui.activity.IntroActivity;
 import com.apps.android.news.news.ui.activity.MainActivity;
 import com.apps.android.news.news.ui.activity.NewsDetailSActivity;
+import com.apps.android.news.news.ui.activity.RegisterActivity;
 
 /**
  * Created by android on 2016/9/13.
@@ -66,4 +67,11 @@ public final class Navigator {
         ActivityCompat.startActivity(activity, intent, null);
     }
 
+    /**
+     * 跳转到微门户
+     */
+    public static void startRegisterActivity(Activity activity) {
+        Intent intent = new Intent(activity, RegisterActivity.class);
+        ActivityCompat.startActivity(activity, intent, null);
+    }
 }

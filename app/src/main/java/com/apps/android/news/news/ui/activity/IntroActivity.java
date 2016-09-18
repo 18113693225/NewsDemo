@@ -73,6 +73,7 @@ public class IntroActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.register_bt:
+                Navigator.startRegisterActivity(IntroActivity.this);
                 break;
             case R.id.look_bt:
                 Navigator.startMainActivity(IntroActivity.this);

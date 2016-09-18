@@ -37,6 +37,7 @@ public class EnterpriseInfoFragment extends Fragment {
                 Navigator.startCertificationActivity(getActivity());
                 break;
             case R.id.info_rl:
+                Navigator.startRegisterActivity(getActivity());
                 break;
             case R.id.door_rl:
                 break;
