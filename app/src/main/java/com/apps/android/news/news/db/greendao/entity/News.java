@@ -225,6 +225,19 @@ public News(Long _id, String id, String lableId, String userId, String status, S
       this.lableId = "1";
    }
 
+   public News(String lableId,String id,String auditDate,String displayMode,String title,String remark,String url,String images,String lables,String isTop){
+      this.id = id;
+      this.auditDate = auditDate;
+      this.displayMode = displayMode;
+      this.title = title;
+      this.remark = remark;
+      this.url = url;
+      this.imgs = images;
+      this.lables = lables;
+      this.isTop = isTop;
+      this.lableId = lableId;
+   }
+
    public static Iterable<News> getTestData(){
       List<News> list = new ArrayList<News>();
       list.add(new News("newsId_0","2016-08-10 12:11:11","0","我的新闻标题","我的新闻摘要","http://www.baidu.com",
@@ -433,6 +446,103 @@ public News(Long _id, String id, String lableId, String userId, String status, S
               "[{id:'lableId_8',name:'老外'}]",
               "0"));
 
+      list.add(new News("2","newsId_25","2016-09-07 09:11:11","3","22老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
+              "[" +
+                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
+                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
+                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
+                      "]",
+              "[{id:'lableId_8',name:'老外'}]",
+              "0"));
+      list.add(new News("2","newsId_26","2016-09-06 04:11:11","3","23老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
+              "[" +
+                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
+                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
+                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
+                      "]",
+              "[{id:'lableId_8',name:'老外'}]",
+              "0"));
+      list.add(new News("2","newsId_27","2016-09-06 05:11:11","3","24老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
+              "[" +
+                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
+                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
+                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
+                      "]",
+              "[{id:'lableId_8',name:'老外'}]",
+              "0"));
+      list.add(new News("2","newsId_28","2016-09-04 09:11:11","3","25老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
+              "[" +
+                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
+                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
+                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
+                      "]",
+              "[{id:'lableId_8',name:'老外'}]",
+              "0"));
+
+      list.add(new News("3","newsId_25","2016-09-07 09:11:11","3","22老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
+              "[" +
+                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
+                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
+                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
+                      "]",
+              "[{id:'lableId_8',name:'老外'}]",
+              "0"));
+      list.add(new News("3","newsId_26","2016-09-06 04:11:11","3","23老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
+              "[" +
+                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
+                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
+                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
+                      "]",
+              "[{id:'lableId_8',name:'老外'}]",
+              "0"));
+      list.add(new News("3","newsId_27","2016-09-06 05:11:11","3","24老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
+              "[" +
+                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
+                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
+                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
+                      "]",
+              "[{id:'lableId_8',name:'老外'}]",
+              "0"));
+      list.add(new News("3","newsId_28","2016-09-04 09:11:11","3","25老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
+              "[" +
+                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
+                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
+                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
+                      "]",
+              "[{id:'lableId_8',name:'老外'}]",
+              "0"));
+      list.add(new News("4","newsId_25","2016-09-07 09:11:11","3","22老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
+              "[" +
+                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
+                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
+                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
+                      "]",
+              "[{id:'lableId_8',name:'老外'}]",
+              "0"));
+      list.add(new News("4","newsId_26","2016-09-06 04:11:11","3","23老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
+              "[" +
+                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
+                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
+                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
+                      "]",
+              "[{id:'lableId_8',name:'老外'}]",
+              "0"));
+      list.add(new News("4","newsId_27","2016-09-06 05:11:11","3","24老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
+              "[" +
+                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
+                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
+                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
+                      "]",
+              "[{id:'lableId_8',name:'老外'}]",
+              "0"));
+      list.add(new News("4","newsId_28","2016-09-04 09:11:11","3","25老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
+              "[" +
+                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
+                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
+                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
+                      "]",
+              "[{id:'lableId_8',name:'老外'}]",
+              "0"));
        return list;
    }
 

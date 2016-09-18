@@ -8,6 +8,7 @@ import android.widget.TextView;
 import com.apps.android.news.news.R;
 import com.apps.android.news.news.db.greendao.entity.Image;
 import com.apps.android.news.news.db.greendao.entity.News;
+import com.bumptech.glide.Glide;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -24,15 +25,20 @@ public class BigImageViewHolder extends EasyViewHolder<News> {
     ImageView image;
     @Bind(R.id.label_tv)
     TextView label;
-
+    Context context;
 
     public BigImageViewHolder(Context context, ViewGroup parent) {
         super(context, parent, R.layout.item_big_image);
+        this.context = context;
         ButterKnife.bind(this, itemView);
     }
 
     @Override
     public void bindTo(int position, News value) {
         title.setText(value.getTitle());
+        if (value.getImageList().size() != 0) {
+            Glide.with(context).load(value.getImageList().get(0).getImgUrl()).error(R.mipmap.ic_err_big).into(image);
+        }
+
     }
 }

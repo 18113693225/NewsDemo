@@ -114,9 +114,6 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
 
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
-        AllNewsList.clear();
-        getNews(id, null);
-        AllNewsList.addAll(newsList);
         handler.sendEmptyMessageDelayed(0, 2000);
     }
 
@@ -126,19 +123,14 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
         try {
             if (newsList.size() != 0) {
                 String time = newsList.get(newsList.size() - 1).getAuditDate();
-                //        getNews(id, time);
+                getNews(id, time);
                 if (newsList.size() == 0) {
-                    mDefineBAGRefreshWithLoadView.updateLoadingMoreText("没有更多数据");
-                    mDefineBAGRefreshWithLoadView.hideLoadingMoreImg();
                     handler.sendEmptyMessageDelayed(2, 1000);
                     return true;
                 } else {
-                    AllNewsList.addAll(newsList);
                     handler.sendEmptyMessageDelayed(1, 500);
                 }
             } else {
-                mDefineBAGRefreshWithLoadView.updateLoadingMoreText("没有更多数据");
-                mDefineBAGRefreshWithLoadView.hideLoadingMoreImg();
                 handler.sendEmptyMessageDelayed(2, 500);
             }
 
@@ -157,12 +149,18 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
             super.handleMessage(msg);
             switch (msg.what) {
                 case 0:
+                    AllNewsList.clear();
+                    getNews(id, null);
+                    AllNewsList.addAll(newsList);
                     mBGARefreshLayout.endRefreshing();
                     break;
                 case 1:
+                    AllNewsList.addAll(newsList);
                     mBGARefreshLayout.endLoadingMore();
                     break;
                 case 2:
+                    mDefineBAGRefreshWithLoadView.updateLoadingMoreText("没有更多数据");
+                    mDefineBAGRefreshWithLoadView.hideLoadingMoreImg();
                     mBGARefreshLayout.endLoadingMore();
                     break;
                 default:
