@@ -6,6 +6,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/info_rl"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_50"
         android:background="@drawable/click_base_bt"
@@ -17,7 +18,7 @@
             android:layout_width="@dimen/weight_30"
             android:layout_height="@dimen/height_30"
             android:layout_centerVertical="true"
-            android:scaleType="centerCrop"
+            android:scaleType="center"
             android:src="@mipmap/ic_info_name" />
 
 
@@ -47,6 +48,7 @@
         android:background="@color/bg_myself" />
 
     <RelativeLayout
+        android:id="@+id/image_rl"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_50"
         android:background="@drawable/click_base_bt"
@@ -58,7 +60,7 @@
             android:layout_width="@dimen/weight_30"
             android:layout_height="@dimen/height_30"
             android:layout_centerVertical="true"
-            android:scaleType="centerCrop"
+            android:scaleType="center"
             android:src="@mipmap/ic_info_license" />
 
 
@@ -88,6 +90,7 @@
         android:background="@color/bg_myself" />
 
     <RelativeLayout
+        android:id="@+id/area_rl"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_50"
         android:background="@drawable/click_base_bt"
@@ -99,7 +102,7 @@
             android:layout_width="@dimen/weight_30"
             android:layout_height="@dimen/height_30"
             android:layout_centerVertical="true"
-            android:scaleType="centerCrop"
+            android:scaleType="center"
             android:src="@mipmap/ic_info_area" />
 
 

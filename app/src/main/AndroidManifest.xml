@@ -12,6 +12,13 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!-- media_picker 库添加的activity -->
+        <activity
+            android:name="mediapicker.activities.MediaPickerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MediaPickerTheme" />
+
         <!--启动页-->
         <activity
             android:name=".ui.activity.LauncherActivity"

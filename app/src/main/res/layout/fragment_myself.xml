@@ -37,10 +37,7 @@
 
     </RelativeLayout>
 
-    <include
-        layout="@layout/myself_navigation_bar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_72" />
+    <include layout="@layout/myself_navigation_bar" />
 
     <FrameLayout
         android:id="@+id/myself_fl"
