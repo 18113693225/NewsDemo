@@ -29,6 +29,7 @@
             android:textSize="@dimen/text_size_18" />
 
         <EditText
+            android:id="@+id/userName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -43,6 +44,7 @@
 
 
     <support.ui.components.SupportButton
+        android:id="@+id/code_bt"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_50"
         android:layout_marginLeft="@dimen/margin_16"
@@ -74,6 +76,7 @@
             android:textSize="@dimen/text_size_18" />
 
         <EditText
+            android:id="@+id/userCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

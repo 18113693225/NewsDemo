@@ -1,9 +1,12 @@
 package com.apps.android.news.news.api.service;
 
 import com.apps.android.news.news.api.ApiService;
+import com.apps.android.news.news.db.greendao.entity.Lable;
 import com.apps.android.news.news.model.DSFAModel;
 import com.apps.android.news.news.utils.util.ParamUtils;
 import com.apps.android.news.news.utils.util.StringUtils;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -21,7 +24,19 @@ public class DSFAServiceManager {
      * 获取用户频道所对应的新闻
      */
     private static final String GET_USER_LABEL_NEWS = "news\\actions\\mobile\\actions\\getUserLabelNewsByAndroid.xml";
+    /**
+     * 获取验证码
+     */
+    private static final String GET_AUTH_CODE = "news\\actions\\mobile\\actions\\autoCode.xml";
 
+    /**
+     * 验证 短信验证码
+     */
+    private static final String VALI_AUTH_CODE = "news\\actions\\mobile\\actions\\valiAutoCode.xml";
+    /**
+     * 初始化用户
+     */
+    private static final String INIT_USER = "news\\actions\\mobile\\actions\\initUser.xml";
     /**
      * 查询所有频道标签
      * @param dsfaCallback
@@ -48,6 +63,57 @@ public class DSFAServiceManager {
         }
         String param = "{userId:'"+userId+"',labelId:'"+lableId+"'}";
         String reqParam = ParamUtils.initParam(GET_USER_LABEL_NEWS,param);
+        doPost(reqParam,dsfaCallback);
+    }
+
+    /**
+     * 获取验证码
+     * @param phone 手机号码
+     * @param dsfaCallback
+     */
+    public static void getAuthCode(String phone,DSFACallback dsfaCallback){
+        String param = "{phone:'"+phone+"'}";
+        String reqParam = ParamUtils.initParam(GET_AUTH_CODE,param);
+        doPost(reqParam,dsfaCallback);
+    }
+
+    /**
+     * 验证 短信验证码
+     * @param phone 手机号码
+     * @param authCode 短信验证码
+     * @param lables 关注的标签
+     * @param dsfaCallback
+     */
+    public static void valiAuthCode(String phone,String authCode,List<Lable> lables,DSFACallback dsfaCallback){
+        String lableStr = "";
+        for (Lable lable : lables) {
+            if(StringUtils.isBlank(lableStr)){
+                lableStr = lable.getId();
+            }else{
+                lableStr += (","+lable.getId());
+            }
+        }
+        String param = "{phone:'"+phone+"',authCode:'"+authCode+"',info:'"+lableStr+"'}";
+        String reqParam = ParamUtils.initParam(VALI_AUTH_CODE,param);
+        doPost(reqParam,dsfaCallback);
+    }
+
+    /**
+     * 初始化用户
+     * @param lables 关注的标签
+     * @param dsfaCallback
+     */
+    public static void initUser(List<Lable> lables,DSFACallback dsfaCallback){
+        String lableStr = "";
+        for (Lable lable : lables) {
+            if(StringUtils.isBlank(lableStr)){
+                lableStr = lable.getId();
+            }else{
+                lableStr += (","+lable.getId());
+            }
+        }
+        String param = "{info:'"+lableStr+"'}";
+        String reqParam = ParamUtils.initParam(INIT_USER,param);
         doPost(reqParam,dsfaCallback);
     }
 
