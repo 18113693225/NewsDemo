@@ -39,8 +39,6 @@ public class RegisterActivity extends BaseActivity {
     EditText code;
     @Bind(R.id.code_bt)
     Button code_bt;
-    public String username;
-    public String userCode;
     private List<Lable> lables = new ArrayList<Lable>();
 
     @Override
@@ -82,7 +80,7 @@ public class RegisterActivity extends BaseActivity {
     }
 
     private void getCode() {
-        username = number.getText().toString();
+        String username = number.getText().toString();
         if (username.length() != 11) {
             dismissHud();
             Toast.makeText(RegisterActivity.this, "手机号不正确", Toast.LENGTH_SHORT).show();
@@ -113,12 +111,14 @@ public class RegisterActivity extends BaseActivity {
     }
 
     private void next() {
-        userCode = code.getText().toString();
+        String username = number.getText().toString();
+        String userCode = code.getText().toString();
         if (userCode.length() != 6) {
             dismissHud();
             Toast.makeText(RegisterActivity.this, "验证码不正确", Toast.LENGTH_SHORT).show();
             return;
         }
+
         DSFAServiceManager.valiAuthCode(username, userCode, lables, new DSFAServiceManager.DSFACallback() {
             @Override
             public void success(DSFAModel dsfaModel) {
