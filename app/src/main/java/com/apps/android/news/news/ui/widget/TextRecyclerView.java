@@ -45,7 +45,12 @@ public class TextRecyclerView extends RecyclerView {
 
     private void initialize() {
         setNestedScrollingEnabled(false);
+        int spanSize = StarterKitApp.appResources().getDimensionPixelSize(R.dimen.margin_10);
         setLayoutManager(new GridLayoutManager(getContext(), spanCount));
+        addItemDecoration(
+                new HorizontalDividerItemDecoration.Builder(getContext()).color(Color.TRANSPARENT)
+                        .size(spanSize / 2)
+                        .build());
         mAdapter = new SimpleAdapter();
         setAdapter(mAdapter);
     }
