@@ -5,6 +5,7 @@ import android.content.Context;
 import com.apps.android.news.news.db.DBManager;
 import com.apps.android.news.news.db.greendao.entity.Lable;
 import com.apps.android.news.news.db.greendao.gen.LableDao;
+import com.apps.android.news.news.model.User;
 
 import java.util.List;
 
@@ -49,6 +50,52 @@ public class LableManager {
      */
     public List<Lable> getLables(){
         return lableDao.queryBuilder().list();
+    }
+
+
+    /**
+     * 更新  所有频道
+     * @param labelList
+     */
+    public void saveLables(final List<Lable> labelList){
+        final List<Lable> userLableList = getUserLables();
+        lableDao.deleteAll();
+        lableDao.insertInTx(labelList);
+        if(userLableList==null) return;
+        lableDao.getSession().runInTx(new Runnable() {
+            @Override
+            public void run() {
+                for (Lable lable: userLableList) {
+                    Lable databaseLable = lableDao.queryBuilder().where(LableDao.Properties.Id.eq(lable.getId())).unique();
+                    if(databaseLable!=null){
+                        databaseLable.setIsSelected("1");
+                        lableDao.update(databaseLable);
+                    }
+                }
+            }
+        });
+    }
+
+    /**
+     * 保存用户  所关注的频道
+     * @param lableList
+     */
+    public void saveUserLables(final List<Lable> lableList){
+        lableDao.getSession().getDatabase().execSQL("UPDATE FROM LABLE SET ISSELECTED = '0'");
+        lableDao.getSession().runInTx(new Runnable() {
+            @Override
+            public void run() {
+                for (Lable lable: lableList) {
+                    Lable databaseLable = lableDao.queryBuilder().where(LableDao.Properties.Id.eq(lable.getId())).unique();
+                    if(databaseLable!=null){
+                        databaseLable.setIsSelected("1");
+                        lableDao.update(databaseLable);
+                    }else{
+                        lableDao.insert(lable);
+                    }
+                }
+            }
+        });
     }
 
     /**

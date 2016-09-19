@@ -11,6 +11,9 @@ import android.widget.TextView;
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.apps.android.news.news.R;
+import com.apps.android.news.news.api.service.DSFAServiceManager;
+import com.apps.android.news.news.db.greendao.entity.Apply;
+import com.apps.android.news.news.model.DSFAModel;
 
 import java.util.ArrayList;
 
@@ -73,7 +76,7 @@ public class CertificationActivity extends BaseActivity {
 
                 break;
             case R.id.commit_bt:
-
+                commit();
                 break;
             default:
                 break;
@@ -89,7 +92,6 @@ public class CertificationActivity extends BaseActivity {
                 mMediaSelectedList.addAll(getMediaItemSelected(data));
                 MediaItem mediaItem = mMediaSelectedList.get(0);
                 location = mediaItem.getPathOrigin(CertificationActivity.this);
-
                 mMediaSelectedList.clear();
             }
         }
@@ -138,4 +140,20 @@ public class CertificationActivity extends BaseActivity {
                 .show();
     }
 
+    private void commit() {
+        Apply apply = new Apply();
+        apply.setCompany_name(name);
+        apply.setLicense(location);
+        DSFAServiceManager.checkCompanyInfo(apply, new DSFAServiceManager.DSFACallback() {
+            @Override
+            public void success(DSFAModel dsfaModel) {
+
+            }
+
+            @Override
+            public void error(DSFAServiceManager.DSFAError error) {
+
+            }
+        });
+    }
 }

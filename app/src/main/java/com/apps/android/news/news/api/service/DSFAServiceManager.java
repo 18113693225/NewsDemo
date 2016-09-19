@@ -1,6 +1,7 @@
 package com.apps.android.news.news.api.service;
 
 import com.apps.android.news.news.api.ApiService;
+import com.apps.android.news.news.db.greendao.entity.Apply;
 import com.apps.android.news.news.db.greendao.entity.Lable;
 import com.apps.android.news.news.model.DSFAModel;
 import com.apps.android.news.news.utils.util.ParamUtils;
@@ -105,8 +106,7 @@ public class DSFAServiceManager {
 
     /**
      * 初始化用户
-     *
-     * @param lables       关注的标签
+     * @param lables 关注标签
      * @param dsfaCallback
      */
     public static void initUser(List<Lable> lables, DSFACallback dsfaCallback) {
@@ -121,6 +121,15 @@ public class DSFAServiceManager {
         String param = "{info:'" + lableStr + "'}";
         String reqParam = ParamUtils.initParam(INIT_USER, param);
         doPost(reqParam, dsfaCallback);
+    }
+
+    /**
+     * 企业申请
+     * @param apply 企业相关信息
+     * @param dsfaCallback
+     */
+    public static void checkCompanyInfo(Apply apply,DSFACallback dsfaCallback){
+
     }
 
     private static void doPost(String param, final DSFACallback dsfaCallback) {

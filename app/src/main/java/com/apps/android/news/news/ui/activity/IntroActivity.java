@@ -5,11 +5,16 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.apps.android.news.news.Navigator;
 import com.apps.android.news.news.R;
+import com.apps.android.news.news.api.service.DSFAServiceManager;
+import com.apps.android.news.news.db.greendao.dao.CustomerManager;
 import com.apps.android.news.news.db.greendao.dao.LableManager;
+import com.apps.android.news.news.db.greendao.entity.Customer;
 import com.apps.android.news.news.db.greendao.entity.Lable;
+import com.apps.android.news.news.model.DSFAModel;
 import com.apps.android.news.news.ui.widget.TextRecyclerView;
 
 import java.util.ArrayList;
@@ -27,6 +32,7 @@ public class IntroActivity extends BaseActivity {
     @Bind(R.id.all_table_rc)
     TextRecyclerView mRecyclerView;
     List<Lable> data;
+    List<Lable> slectData = new ArrayList<Lable>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +55,31 @@ public class IntroActivity extends BaseActivity {
                 Navigator.startRegisterActivity(IntroActivity.this);
                 break;
             case R.id.look_bt:
-                Navigator.startMainActivity(IntroActivity.this);
-                finish();
+                showHud();
+                look();
                 break;
             default:
                 break;
         }
     }
 
+    private void look() {
+        DSFAServiceManager.initUser(slectData, new DSFAServiceManager.DSFACallback() {
+            @Override
+            public void success(DSFAModel dsfaModel) {
+                dismissHud();
+                Customer user = dsfaModel.getUser();
+                CustomerManager.getInstance(IntroActivity.this).saveCustomer(user);
+                Navigator.startMainActivity(IntroActivity.this);
+                finish();
+            }
+
+            @Override
+            public void error(DSFAServiceManager.DSFAError error) {
+                dismissHud();
+                Toast.makeText(IntroActivity.this, "网络连接错误", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 }
