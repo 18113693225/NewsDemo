@@ -2,67 +2,14 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/click_recycler_bg"
-    android:orientation="vertical"
-    android:padding="@dimen/activity_horizontal_margin">
+    android:background="@color/bg_myself"
+    android:orientation="vertical">
 
-
-    <RelativeLayout
+    <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_100">
+        android:layout_height="1dip"
+        android:background="@color/bg_myself" />
 
-
-        <ImageView
-            android:id="@+id/image"
-            android:layout_width="@dimen/weight_80"
-            android:layout_height="@dimen/height_80"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_err_small" />
-
-        <TextView
-            android:id="@+id/focus_tv"
-            android:layout_width="@dimen/weight_60"
-            android:layout_height="@dimen/height_30"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:background="@drawable/round_text"
-            android:gravity="center"
-            android:text="+关注"
-            android:textColor="@color/white" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignTop="@id/image"
-            android:layout_marginLeft="@dimen/margin_8"
-            android:layout_marginRight="@dimen/margin_20"
-            android:layout_toLeftOf="@+id/focus_tv"
-            android:layout_toRightOf="@id/image"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上海市梦创科技有限公司"
-                android:textColor="@color/title"
-                android:textSize="@dimen/text_size_16" />
-
-
-            <TextView
-                android:id="@+id/label_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_5"
-                android:text="电子政务 大数据 党校院务系统 智慧干训"
-                android:textColor="@color/table"
-                android:textSize="@dimen/text_size_12" />
-
-        </LinearLayout>
-
-
-    </RelativeLayout>
-
+    <include layout="@layout/item_directory" />
 
 </LinearLayout>
