@@ -7,7 +7,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -172,6 +171,19 @@ public class MainActivity extends FragmentActivity {
     @OnClick({R.id.fl_home, R.id.fl_business, R.id.fl_focus, R.id.fl_myself, R.id.fl_add})
     public void MenuClick(View view) {
         restartButton();
+        /*DSFAServiceManager.getNewsByUserId("1111","017cc5efe42d4a819edbf0453bcb3988",new DSFAServiceManager.DSFACallback() {
+            @Override
+            public void success(DSFAModel dsfaModel) {
+                List<News> list = dsfaModel.getUserLableNews();
+                List<Image> imagsList =list.get(5).getImageList();
+                List<Lable> lableList = list.get(0).getLableList();
+            }
+
+            @Override
+            public void error(DSFAServiceManager.DSFAError error) {
+                System.out.println(error.getErrorMsg());
+            }
+        });*/
         int id = view.getId();
         switch (id) {
             case R.id.fl_home:

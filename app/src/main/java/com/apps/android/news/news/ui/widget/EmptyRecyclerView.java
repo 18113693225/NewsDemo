@@ -10,7 +10,6 @@ import android.view.View;
  */
 public class EmptyRecyclerView extends RecyclerView {
     private View emptyView;
-    private static final String TAG = "hiwhitley";
 
     final private AdapterDataObserver observer = new AdapterDataObserver() {
         @Override

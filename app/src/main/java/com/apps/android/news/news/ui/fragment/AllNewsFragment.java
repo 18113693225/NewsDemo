@@ -41,11 +41,10 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
     private Context mContext;
     public Bundle args;
     public String id;
-
     @Bind(R.id.bga_rl)
-    public BGARefreshLayout mBGARefreshLayout;
+    BGARefreshLayout mBGARefreshLayout;
     @Bind(R.id.news_rv)
-    public RecyclerView mRecyclerView;
+    RecyclerView mRecyclerView;
     private List<News> AllNewsList = new ArrayList<News>();
     private List<News> newsList;
     private CustomRecyclerViewAdapter mRecyclerViewAdapter = null;
@@ -110,6 +109,7 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
                 Navigator.startNewsDetailsActivity(getActivity(), AllNewsList.get(position).getUrl());
             }
         });
+
     }
 
 

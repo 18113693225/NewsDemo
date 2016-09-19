@@ -8,14 +8,8 @@ import android.view.View;
 
 import com.apps.android.news.news.Navigator;
 import com.apps.android.news.news.R;
-import com.apps.android.news.news.api.ApiService;
-import com.apps.android.news.news.api.service.TabService;
 import com.apps.android.news.news.db.greendao.dao.LableManager;
 import com.apps.android.news.news.db.greendao.entity.Lable;
-import com.apps.android.news.news.model.Channels;
-import com.apps.android.news.news.utils.util.ParamUtils;
-import com.smartydroid.android.starter.kit.network.callback.MessageCallback;
-import com.smartydroid.android.starter.kit.utilities.NetworkUtils;
 
 import java.util.List;
 
@@ -28,8 +22,8 @@ import retrofit2.Call;
  * Created by android on 2016/9/13.
  */
 public class IntroActivity extends BaseActivity {
-    private NetworkUtils<Channels> mNetworkUtils;
-    private TabService mTabService;
+    //private NetworkUtils<Channels> mNetworkUtils;
+    //private TabService mTabService;
     @Bind(R.id.all_table_rc)
     public RecyclerView mRecyclerView;
 
@@ -44,6 +38,7 @@ public class IntroActivity extends BaseActivity {
     }
 
     private void getAllTable() {
+        /*
         Call<Channels> tabCall = mTabService.AllTable(ParamUtils.initParam("news\\actions\\mobile\\actions\\channels.xml", null));
         mNetworkUtils = NetworkUtils.create(new MessageCallback<Channels>(this) {
 
@@ -58,10 +53,11 @@ public class IntroActivity extends BaseActivity {
 
         });
         mNetworkUtils.enqueue(tabCall);
+        */
     }
 
     private void init() {
-        mTabService = ApiService.createTabService();
+       // mTabService = ApiService.createTabService();
     }
 
     private void initView() {

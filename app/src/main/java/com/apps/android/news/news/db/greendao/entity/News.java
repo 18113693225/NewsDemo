@@ -1,5 +1,7 @@
 package com.apps.android.news.news.db.greendao.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
@@ -15,6 +17,7 @@ import java.util.List;
  * Created by Administrator on 2016/9/16.
  */
 @Entity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class News {
    @Id
    private Long _id;//主键
@@ -33,162 +36,17 @@ public class News {
    private String price;//当priceType=0时 必填；供需页面的 所标价格
    private String auditUserId;//审核人ID
    private String auditDate;//审核时间
-   private String imgs;//图片数组字符串
-   private String lables;//标签数组字符串
+   private String images;//图片数组字符串
+   private String labels;//标签数组字符串
 
    @Transient
    private List<Image> imageList;
    @Transient
    private List<Lable> lableList;
-   public String getLables(){
-      return this.lables;
-   }
-   public List<Lable> getLableList() {
-      this.lableList = new ArrayList<Lable>();
-      try {
-         JSONArray lableArray = new JSONArray(this.lables);
-         JSONObject lableObj = null;
-         Lable lable = null;
-         int size = lableArray.length();
-         for(int i=0;i<size;i++){
-            lableObj = lableArray.getJSONObject(i);
-            lable = new Lable(null,lableObj.getString("id"),lableObj.getString("name"),i+"","0");
-            lableList.add(lable);
-         }
-      } catch (JSONException e) {
-         e.printStackTrace();
-      }
-      return this.lableList;
-   }
-   public void setLables(String lables) {
-      this.lables = lables;
-   }
-   public String getImgs() {
-      return this.imgs;
-   }
-   public List<Image> getImageList() {
-      this.imageList = new ArrayList<Image>();
-      try {
-         JSONArray imageArray = new JSONArray(imgs);
-         JSONObject imageObj = null;
-         Image image = null;
-         int size = imageArray.length();
-         for(int i=0;i<size;i++){
-            imageObj = imageArray.getJSONObject(i);
-            image = new Image(imageObj.getString("id"),imageObj.getString("aId"),imageObj.getString("imgUrl"),imageObj.getString("sUrl"));
-            imageList.add(image);
-         }
-      } catch (JSONException e) {
-         e.printStackTrace();
-      }
-      return this.imageList;
-   }
 
-   public void setImgs(String imgs) {
-
-      this.imgs = imgs;
-   }
-
-
-   public String getAuditDate() {
-      return this.auditDate;
-   }
-   public void setAuditDate(String auditDate) {
-      this.auditDate = auditDate;
-   }
-   public String getAuditUserId() {
-      return this.auditUserId;
-   }
-   public void setAuditUserId(String auditUserId) {
-      this.auditUserId = auditUserId;
-   }
-   public String getPrice() {
-      return this.price;
-   }
-   public void setPrice(String price) {
-      this.price = price;
-   }
-   public String getPriceType() {
-      return this.priceType;
-   }
-   public void setPriceType(String priceType) {
-      this.priceType = priceType;
-   }
-   public String getModifyTime() {
-      return this.modifyTime;
-   }
-   public void setModifyTime(String modifyTime) {
-      this.modifyTime = modifyTime;
-   }
-   public String getCreateTime() {
-      return this.createTime;
-   }
-   public void setCreateTime(String createTime) {
-      this.createTime = createTime;
-   }
-   public String getUrl() {
-      return this.url;
-   }
-   public void setUrl(String url) {
-      this.url = url;
-   }
-   public String getIsTop() {
-      return this.isTop;
-   }
-   public void setIsTop(String isTop) {
-      this.isTop = isTop;
-   }
-   public String getDisplayMode() {
-      return this.displayMode;
-   }
-   public void setDisplayMode(String displayMode) {
-      this.displayMode = displayMode;
-   }
-   public String getRemark() {
-      return this.remark;
-   }
-   public void setRemark(String remark) {
-      this.remark = remark;
-   }
-   public String getTitle() {
-      return this.title;
-   }
-   public void setTitle(String title) {
-      this.title = title;
-   }
-   public String getStatus() {
-      return this.status;
-   }
-   public void setStatus(String status) {
-      this.status = status;
-   }
-   public String getUserId() {
-      return this.userId;
-   }
-   public void setUserId(String userId) {
-      this.userId = userId;
-   }
-   public String getId() {
-      return this.id;
-   }
-   public void setId(String id) {
-      this.id = id;
-   }
-   public Long get_id() {
-      return this._id;
-   }
-   public void set_id(Long _id) {
-      this._id = _id;
-   }
-   public String getLableId() {
-      return this.lableId;
-   }
-   public void setLableId(String lableId) {
-      this.lableId = lableId;
-   }
-   @Generated(hash = 756262589)
+@Generated(hash = 1780465411)
 public News(Long _id, String id, String lableId, String userId, String status, String title, String remark, String displayMode, String isTop, String url, String createTime, String modifyTime,
-                String priceType, String price, String auditUserId, String auditDate, String imgs, String lables) {
+                String priceType, String price, String auditUserId, String auditDate, String images, String labels) {
         this._id = _id;
         this.id = id;
         this.lableId = lableId;
@@ -205,38 +63,75 @@ public News(Long _id, String id, String lableId, String userId, String status, S
         this.price = price;
         this.auditUserId = auditUserId;
         this.auditDate = auditDate;
-        this.imgs = imgs;
-        this.lables = lables;
+        this.images = images;
+        this.labels = labels;
 }
+
 @Generated(hash = 1579685679)
-   public News() {
+public News() {
+}
+
+   public List<Lable> getLableList() {
+      this.lableList = new ArrayList<Lable>();
+      try {
+         JSONArray lableArray = new JSONArray(this.labels);
+         JSONObject lableObj = null;
+         Lable lable = null;
+         int size = lableArray.length();
+         for(int i=0;i<size;i++){
+            lableObj = lableArray.getJSONObject(i);
+            lable = new Lable(null,lableObj.getString("id"),lableObj.getString("name"),i+"","0");
+            lableList.add(lable);
+         }
+      } catch (JSONException e) {
+         e.printStackTrace();
+      }
+      return this.lableList;
    }
 
-   public News(String id,String auditDate,String displayMode,String title,String remark,String url,String images,String lables,String isTop){
-      this.id = id;
-      this.auditDate = auditDate;
-      this.displayMode = displayMode;
-      this.title = title;
-      this.remark = remark;
-      this.url = url;
-      this.imgs = images;
-      this.lables = lables;
-      this.isTop = isTop;
-      this.lableId = "1";
+   public List<Image> getImageList() {
+      this.imageList = new ArrayList<Image>();
+      try {
+         JSONArray imageArray = new JSONArray(this.images);
+         JSONObject imageObj = null;
+         Image image = null;
+         int size = imageArray.length();
+         for(int i=0;i<size;i++){
+            imageObj = imageArray.getJSONObject(i);
+            image = new Image(imageObj.getString("id"),imageObj.getString("aId"),imageObj.getString("imgUrl"),imageObj.getString("sUrl"));
+            imageList.add(image);
+         }
+      } catch (JSONException e) {
+         e.printStackTrace();
+      }
+      return this.imageList;
    }
+    public News(String id,String auditDate,String displayMode,String title,String remark,String url,String images,String lables,String isTop){
+        this.id = id;
+        this.auditDate = auditDate;
+        this.displayMode = displayMode;
+        this.title = title;
+        this.remark = remark;
+        this.url = url;
+        this.images = images;
+        this.labels = lables;
+        this.isTop = isTop;
+        this.lableId = "1";
+    }
 
-   public News(String lableId,String id,String auditDate,String displayMode,String title,String remark,String url,String images,String lables,String isTop){
-      this.id = id;
-      this.auditDate = auditDate;
-      this.displayMode = displayMode;
-      this.title = title;
-      this.remark = remark;
-      this.url = url;
-      this.imgs = images;
-      this.lables = lables;
-      this.isTop = isTop;
-      this.lableId = lableId;
-   }
+    public News(String lableId,String id,String auditDate,String displayMode,String title,String remark,String url,String images,String lables,String isTop){
+        this.id = id;
+        this.auditDate = auditDate;
+        this.displayMode = displayMode;
+        this.title = title;
+        this.remark = remark;
+        this.url = url;
+        this.images = images;
+        this.labels = lables;
+        this.isTop = isTop;
+        this.lableId = lableId;
+    }
+
 
    public static Iterable<News> getTestData(){
       List<News> list = new ArrayList<News>();
@@ -462,7 +357,7 @@ public News(Long _id, String id, String lableId, String userId, String status, S
                       "]",
               "[{id:'lableId_8',name:'老外'}]",
               "0"));
-      list.add(new News("2","newsId_27","2016-09-06 05:11:11","3","24老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
+      list.add(new News("2","newsId_27","2016-09-06 05:11:11","3","2老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
               "[" +
                       "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
                       "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
@@ -470,72 +365,7 @@ public News(Long _id, String id, String lableId, String userId, String status, S
                       "]",
               "[{id:'lableId_8',name:'老外'}]",
               "0"));
-      list.add(new News("2","newsId_28","2016-09-04 09:11:11","3","25老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
-              "[" +
-                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
-                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
-                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
-                      "]",
-              "[{id:'lableId_8',name:'老外'}]",
-              "0"));
-
-      list.add(new News("3","newsId_25","2016-09-07 09:11:11","3","22老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
-              "[" +
-                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
-                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
-                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
-                      "]",
-              "[{id:'lableId_8',name:'老外'}]",
-              "0"));
-      list.add(new News("3","newsId_26","2016-09-06 04:11:11","3","23老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
-              "[" +
-                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
-                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
-                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
-                      "]",
-              "[{id:'lableId_8',name:'老外'}]",
-              "0"));
-      list.add(new News("3","newsId_27","2016-09-06 05:11:11","3","24老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
-              "[" +
-                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
-                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
-                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
-                      "]",
-              "[{id:'lableId_8',name:'老外'}]",
-              "0"));
-      list.add(new News("3","newsId_28","2016-09-04 09:11:11","3","25老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
-              "[" +
-                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
-                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
-                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
-                      "]",
-              "[{id:'lableId_8',name:'老外'}]",
-              "0"));
-      list.add(new News("4","newsId_25","2016-09-07 09:11:11","3","22老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
-              "[" +
-                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
-                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
-                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
-                      "]",
-              "[{id:'lableId_8',name:'老外'}]",
-              "0"));
-      list.add(new News("4","newsId_26","2016-09-06 04:11:11","3","23老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
-              "[" +
-                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
-                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
-                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
-                      "]",
-              "[{id:'lableId_8',name:'老外'}]",
-              "0"));
-      list.add(new News("4","newsId_27","2016-09-06 05:11:11","3","24老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
-              "[" +
-                      "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
-                      "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
-                      "{id:'imageId_2',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg',sUrl:'http://scimg.jb51.net/allimg/160101/14-1601011126390-L.jpg'}" +
-                      "]",
-              "[{id:'lableId_8',name:'老外'}]",
-              "0"));
-      list.add(new News("4","newsId_28","2016-09-04 09:11:11","3","25老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
+      list.add(new News("2","newsId_28","2016-09-04 09:11:11","3","22老外考汉语听力遇到《江南皮革厂倒闭了》表情简直萌爆了","我的新闻摘要","http://www.baidu.com",
               "[" +
                       "{id:'imageId_0',aId:'newsId_25',imgUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg',sUrl:'http://sc.jb51.net/uploads/allimg/150421/14-1504211A6210-L.jpg'}," +
                       "{id:'imageId_1',aId:'newsId_25',imgUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg',sUrl:'http://scimg.jb51.net/allimg/150921/14-1509211509580-L.jpg'}," +
@@ -545,6 +375,150 @@ public News(Long _id, String id, String lableId, String userId, String status, S
               "0"));
        return list;
    }
+
+public String getLabels() {
+        return this.labels;
+}
+
+public void setLabels(String labels) {
+        this.labels = labels;
+}
+
+public String getImages() {
+        return this.images;
+}
+
+public void setImages(String images) {
+        this.images = images;
+}
+
+public String getAuditDate() {
+        return this.auditDate;
+}
+
+public void setAuditDate(String auditDate) {
+        this.auditDate = auditDate;
+}
+
+public String getAuditUserId() {
+        return this.auditUserId;
+}
+
+public void setAuditUserId(String auditUserId) {
+        this.auditUserId = auditUserId;
+}
+
+public String getPrice() {
+        return this.price;
+}
+
+public void setPrice(String price) {
+        this.price = price;
+}
+
+public String getPriceType() {
+        return this.priceType;
+}
+
+public void setPriceType(String priceType) {
+        this.priceType = priceType;
+}
+
+public String getModifyTime() {
+        return this.modifyTime;
+}
+
+public void setModifyTime(String modifyTime) {
+        this.modifyTime = modifyTime;
+}
+
+public String getCreateTime() {
+        return this.createTime;
+}
+
+public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+}
+
+public String getUrl() {
+        return this.url;
+}
+
+public void setUrl(String url) {
+        this.url = url;
+}
+
+public String getIsTop() {
+        return this.isTop;
+}
+
+public void setIsTop(String isTop) {
+        this.isTop = isTop;
+}
+
+public String getDisplayMode() {
+        return this.displayMode;
+}
+
+public void setDisplayMode(String displayMode) {
+        this.displayMode = displayMode;
+}
+
+public String getRemark() {
+        return this.remark;
+}
+
+public void setRemark(String remark) {
+        this.remark = remark;
+}
+
+public String getTitle() {
+        return this.title;
+}
+
+public void setTitle(String title) {
+        this.title = title;
+}
+
+public String getStatus() {
+        return this.status;
+}
+
+public void setStatus(String status) {
+        this.status = status;
+}
+
+public String getUserId() {
+        return this.userId;
+}
+
+public void setUserId(String userId) {
+        this.userId = userId;
+}
+
+public String getLableId() {
+        return this.lableId;
+}
+
+public void setLableId(String lableId) {
+        this.lableId = lableId;
+}
+
+public String getId() {
+        return this.id;
+}
+
+public void setId(String id) {
+        this.id = id;
+}
+
+public Long get_id() {
+        return this._id;
+}
+
+public void set_id(Long _id) {
+        this._id = _id;
+}
 
 
 

@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.apps.android.news.news.R;
 import com.apps.android.news.news.db.greendao.dao.LableManager;
 import com.apps.android.news.news.db.greendao.entity.Lable;
-import com.apps.android.news.news.model.Table;
 import com.apps.android.news.news.ui.adapter.NewsFragmentPagerAdapter;
 import com.apps.android.news.news.ui.widget.MenuHorizontalScrollView;
 import com.apps.android.news.news.utils.tool.WindowsTool;

@@ -1,6 +1,6 @@
 package com.apps.android.news.news.api;
 
-import com.apps.android.news.news.api.service.TabService;
+import com.apps.android.news.news.api.service.IDSFAService;
 import com.smartydroid.android.starter.kit.retrofit.RetrofitBuilder;
 
 import retrofit2.Retrofit;
@@ -15,10 +15,11 @@ public class ApiService {
     }
 
     /**
-     * 选项卡接口
+     * 产业头条服务
+     * @return
      */
-    public static TabService createTabService() {
-        return retrofit().create(TabService.class);
+    public static IDSFAService createDSFAService(){
+        return retrofit().create(IDSFAService.class);
     }
 
 
