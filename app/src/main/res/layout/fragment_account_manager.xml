@@ -6,6 +6,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/user_info_rl"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_50"
         android:background="@drawable/click_base_bt"

@@ -11,6 +11,7 @@ import com.apps.android.news.news.R;
 import com.apps.android.news.news.db.greendao.dao.LableManager;
 import com.apps.android.news.news.db.greendao.entity.Lable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
@@ -22,46 +23,21 @@ import retrofit2.Call;
  * Created by android on 2016/9/13.
  */
 public class IntroActivity extends BaseActivity {
-    //private NetworkUtils<Channels> mNetworkUtils;
-    //private TabService mTabService;
     @Bind(R.id.all_table_rc)
     public RecyclerView mRecyclerView;
-
+    List<Lable> data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro);
         init();
-        getAllTable();
-        initView();
     }
 
-    private void getAllTable() {
-        /*
-        Call<Channels> tabCall = mTabService.AllTable(ParamUtils.initParam("news\\actions\\mobile\\actions\\channels.xml", null));
-        mNetworkUtils = NetworkUtils.create(new MessageCallback<Channels>(this) {
-
-            @Override
-            public void respondSuccess(Channels data) {
-                super.respondSuccess(data);
-                if (data.channels != null) {
-                    //cDao.initChannels(data.channels);
-                }
-
-            }
-
-        });
-        mNetworkUtils.enqueue(tabCall);
-        */
-    }
 
     private void init() {
-       // mTabService = ApiService.createTabService();
-    }
+        data = LableManager.getInstance(this).getLables();
 
-    private void initView() {
-        List<Lable> data = LableManager.getInstance(this).getLables();
     }
 
 

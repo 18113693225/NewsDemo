@@ -68,7 +68,7 @@ public final class Navigator {
     }
 
     /**
-     * 跳转到微门户
+     * 跳转到注册
      */
     public static void startRegisterActivity(Activity activity) {
         Intent intent = new Intent(activity, RegisterActivity.class);
