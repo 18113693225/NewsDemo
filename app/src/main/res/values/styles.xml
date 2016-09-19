@@ -35,6 +35,10 @@
         <item name="android:textSize">16.0sp</item>
         <item name="android:textColor">@drawable/top_menu_btn_text</item>
     </style>
+    <!--topMenu1-->
+    <style name="top_menu_btn_text1">
+        <item name="android:textSize">16.0sp</item>
+    </style>
 
 
 </resources>

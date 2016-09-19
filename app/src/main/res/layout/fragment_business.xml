@@ -1,13 +1,56 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragment.BusinessFragment">
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="hellow world" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
 
-</FrameLayout>
+        >
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/frg_dynamic_tab"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_40"
+                android:background="@color/white"
+                app:tabIndicatorColor="@color/menu_btn_text_pressed"
+                app:tabIndicatorHeight="2dip"
+                app:tabSelectedTextColor="@color/menu_btn_text_pressed"
+                app:tabTextAppearance="@style/top_menu_btn_text1"
+                app:tabTextColor="@color/title" />
+
+        </android.support.design.widget.AppBarLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_40"
+            android:layout_weight="3"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="@dimen/weight_30"
+                android:layout_height="@dimen/height_30"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_search" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/frg_dynamic_viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </android.support.v4.view.ViewPager>
+
+</LinearLayout>
