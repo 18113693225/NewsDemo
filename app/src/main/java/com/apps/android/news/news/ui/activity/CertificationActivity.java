@@ -3,6 +3,7 @@ package com.apps.android.news.news.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -32,11 +33,23 @@ public class CertificationActivity extends BaseActivity {
     String location;
     @Bind(R.id.account_info_tv)
     TextView accountName;
+    @Bind(R.id.toolBar)
+    Toolbar toolbar;
+    @Bind(R.id.toolbar_center_tv)
+    TextView toolbar_center_tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_certification);
+        setUpToolbar();
+    }
+
+    private void setUpToolbar() {
+        toolbar.setTitle("");
+        toolbar_center_tv.setText("资料申请");
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.mipmap.ic_back);
     }
 
     @Override
@@ -47,7 +60,7 @@ public class CertificationActivity extends BaseActivity {
         return true;
     }
 
-    @OnClick({R.id.info_rl, R.id.image_rl, R.id.area_rl})
+    @OnClick({R.id.info_rl, R.id.image_rl, R.id.area_rl, R.id.commit_bt})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.info_rl:
@@ -57,6 +70,10 @@ public class CertificationActivity extends BaseActivity {
                 showMediaPicker();
                 break;
             case R.id.area_rl:
+
+                break;
+            case R.id.commit_bt:
+
                 break;
             default:
                 break;

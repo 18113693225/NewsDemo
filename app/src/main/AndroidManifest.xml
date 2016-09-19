@@ -61,21 +61,15 @@
             android:name=".ui.activity.CertificationActivity"
             android:label="企业认证"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.activity.MainActivity" />
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <!--信息维护-->
         <activity
             android:name=".ui.activity.InfoActivity"
             android:label="信息维护"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.activity.MainActivity" />
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <!--微门户-->
         <activity
             android:name=".ui.activity.DoorActivity"

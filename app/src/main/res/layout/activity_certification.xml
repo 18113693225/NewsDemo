@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/custom_toolbar" />
 
     <RelativeLayout
         android:id="@+id/info_rl"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_50"
+        android:layout_marginTop="@dimen/margin_20"
         android:background="@drawable/click_base_bt"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin">
@@ -126,5 +131,22 @@
             android:textColor="@color/menu_btn_text_normal"
             android:textSize="@dimen/text_size_14" />
     </RelativeLayout>
+
+
+    <support.ui.components.SupportButton
+        android:id="@+id/commit_bt"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_50"
+        android:layout_marginLeft="@dimen/margin_16"
+        android:layout_marginRight="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_30"
+        android:gravity="center_horizontal"
+        android:text="提交审核"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_20"
+        app:supportButtonCornerRadius="8dp"
+        app:supportButtonNormalColor="@color/color_bg_bt"
+        app:supportButtonRippleColor="@color/color_bg_bt_shadow" />
+
 
 </LinearLayout>
