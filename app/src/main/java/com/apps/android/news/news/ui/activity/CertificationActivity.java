@@ -28,7 +28,8 @@ public class CertificationActivity extends BaseActivity {
 
     public static final int REQUEST_MEDIA = 100;
     public ArrayList<MediaItem> mMediaSelectedList = new ArrayList<>();
-    public String name;
+    String name;
+    String location;
     @Bind(R.id.account_info_tv)
     TextView accountName;
 
@@ -70,7 +71,7 @@ public class CertificationActivity extends BaseActivity {
                 mMediaSelectedList.clear();
                 mMediaSelectedList.addAll(getMediaItemSelected(data));
                 MediaItem mediaItem = mMediaSelectedList.get(0);
-                String location = mediaItem.getPathOrigin(CertificationActivity.this);
+                location = mediaItem.getPathOrigin(CertificationActivity.this);
 
                 mMediaSelectedList.clear();
             }

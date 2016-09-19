@@ -11,6 +11,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+
         android:text="@string/content"
         android:textColor="@color/color_content"
         android:textSize="@dimen/text_size_12" />
@@ -28,7 +29,7 @@
         android:textSize="@dimen/text_size_16" />
 
 
-    <android.support.v7.widget.RecyclerView
+    <com.apps.android.news.news.ui.widget.TextRecyclerView
         android:id="@+id/all_table_rc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -96,8 +97,6 @@
             fbutton:shadowColor="@color/color_bg_bt_shadow"
             fbutton:shadowEnabled="true"
             fbutton:shadowHeight="1dp" />
-
-
     </RelativeLayout>
 
 

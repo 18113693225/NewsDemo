@@ -10,6 +10,7 @@ import com.apps.android.news.news.Navigator;
 import com.apps.android.news.news.R;
 import com.apps.android.news.news.db.greendao.dao.LableManager;
 import com.apps.android.news.news.db.greendao.entity.Lable;
+import com.apps.android.news.news.ui.widget.TextRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +25,7 @@ import retrofit2.Call;
  */
 public class IntroActivity extends BaseActivity {
     @Bind(R.id.all_table_rc)
-    public RecyclerView mRecyclerView;
+    TextRecyclerView mRecyclerView;
     List<Lable> data;
 
     @Override
@@ -37,7 +38,7 @@ public class IntroActivity extends BaseActivity {
 
     private void init() {
         data = LableManager.getInstance(this).getLables();
-
+        mRecyclerView.setData(data);
     }
 
 
