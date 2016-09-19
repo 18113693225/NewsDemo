@@ -16,21 +16,21 @@ import java.io.Serializable;
 public class Customer implements Serializable {
     @Id
     private Long _id;
-    private String id;
-    private String stochastic;
-    private String account;
-    private String pawsserd;
-    private String head;
-    private String phone;
-    private String email;
-    private String creat_date;
-    private String effective;
-    private String customer_name;
-    private String type;
-    private String info;
-    private String trade;
-    private String province;
-    private String city;
+    private String id;//用户ID
+    private String stochastic;//用户编码
+    private String account;//用户帐号
+    private String pawsserd;//用户密码
+    private String head;//用户头像
+    private String phone;//用户手机
+    private String email;//邮件
+    private String creat_date;//创建日期
+    private String effective;//是否有效 0、无效 1、有效
+    private String customer_name;//用户昵称
+    private String type;//用户类型  0、普通用户 1、企业用户
+    private String info;//用户个性化信息
+    private String trade;//行业编码
+    private String province;//省份
+    private String city;//城市
     public String getCity() {
         return this.city;
     }

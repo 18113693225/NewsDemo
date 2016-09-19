@@ -16,12 +16,13 @@ public class CustomerManager {
     private static CustomerManager mInstance;
     private static CustomerDao customerDao;
     private Context context;
-    private CustomerManager(Context context){
+
+    private CustomerManager(Context context) {
         this.context = context;
         customerDao = DBManager.getInstance(context).getDaoSession().getCustomerDao();
     }
 
-    public static CustomerManager getInstance(Context context){
+    public static CustomerManager getInstance(Context context) {
         if (mInstance == null) {
             synchronized (LableManager.class) {
                 if (mInstance == null) {
@@ -34,23 +35,25 @@ public class CustomerManager {
 
     /**
      * 保存用户
+     *
      * @param customer
      * @return
      */
-    public boolean saveCustomer(Customer customer){
+    public boolean saveCustomer(Customer customer) {
         Customer other = customerDao.queryBuilder().unique();
         long i = customerDao.insert(customer);
-        if(i>0&&other!=null){
+        if (i > 0 && other != null) {
             customerDao.deleteByKey(other.get_id());
         }
-        return i>0;
+        return i > 0;
     }
 
     /**
      * 获取用户信息
+     *
      * @return
      */
-    public Customer getCustomer(){
+    public Customer getCustomer() {
         return customerDao.queryBuilder().unique();
     }
 }

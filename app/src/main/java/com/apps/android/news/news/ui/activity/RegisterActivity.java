@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.apps.android.news.news.Navigator;
 import com.apps.android.news.news.R;
 import com.apps.android.news.news.api.service.DSFAServiceManager;
 import com.apps.android.news.news.db.DBManager;
@@ -126,6 +127,8 @@ public class RegisterActivity extends BaseActivity {
                 if (flag) {
                     Customer user = dsfaModel.getUser();
                     CustomerManager.getInstance(RegisterActivity.this).saveCustomer(user);
+                    Navigator.startMainActivity(RegisterActivity.this);
+                    finish();
                 } else {
                     Toast.makeText(RegisterActivity.this, "网络连接错误", Toast.LENGTH_SHORT).show();
                 }
