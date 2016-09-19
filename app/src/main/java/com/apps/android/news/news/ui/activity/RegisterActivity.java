@@ -10,7 +10,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apps.android.news.news.R;
+import com.apps.android.news.news.api.service.DSFAServiceManager;
+import com.apps.android.news.news.db.DBManager;
+import com.apps.android.news.news.db.greendao.dao.CustomerManager;
+import com.apps.android.news.news.db.greendao.entity.Customer;
+import com.apps.android.news.news.db.greendao.entity.Lable;
+import com.apps.android.news.news.model.DSFAModel;
 import com.apps.android.news.news.utils.tool.TimerCount;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -29,6 +38,9 @@ public class RegisterActivity extends BaseActivity {
     EditText code;
     @Bind(R.id.code_bt)
     Button code_bt;
+    public String username;
+    public String userCode;
+    private List<Lable> lables = new ArrayList<Lable>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,11 +64,16 @@ public class RegisterActivity extends BaseActivity {
         return true;
     }
 
-    @OnClick({R.id.code_bt})
+    @OnClick({R.id.code_bt, R.id.next_bt})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.code_bt:
+                showHud("获取验证码");
                 getCode();
+                break;
+            case R.id.next_bt:
+                showHud("注册中");
+                next();
                 break;
             default:
                 break;
@@ -64,12 +81,62 @@ public class RegisterActivity extends BaseActivity {
     }
 
     private void getCode() {
-        String username = number.getText().toString();
+        username = number.getText().toString();
         if (username.length() != 11) {
-            Toast.makeText(this, "手机号不正确", Toast.LENGTH_SHORT).show();
+            dismissHud();
+            Toast.makeText(RegisterActivity.this, "手机号不正确", Toast.LENGTH_SHORT).show();
             return;
         }
-        TimerCount timer = new TimerCount(60000, 1000, code_bt);
-        timer.start();
+        DSFAServiceManager.getAuthCode(username, new DSFAServiceManager.DSFACallback() {
+            @Override
+            public void success(DSFAModel dsfaModel) {
+                dismissHud();
+                boolean flag = dsfaModel.getState();
+                if (flag) {
+                    TimerCount timer = new TimerCount(60000, 1000, code_bt);
+                    timer.start();
+                } else {
+                    Toast.makeText(RegisterActivity.this, "网络连接错误", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void error(DSFAServiceManager.DSFAError error) {
+                dismissHud();
+                Toast.makeText(RegisterActivity.this, "网络连接错误", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+    private void next() {
+        userCode = code.getText().toString();
+        if (userCode.length() != 6) {
+            dismissHud();
+            Toast.makeText(RegisterActivity.this, "验证码不正确", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        DSFAServiceManager.valiAuthCode(username, userCode, lables, new DSFAServiceManager.DSFACallback() {
+            @Override
+            public void success(DSFAModel dsfaModel) {
+                dismissHud();
+                boolean flag = dsfaModel.getValiCodeState();
+                if (flag) {
+                    Customer user = dsfaModel.getUser();
+                    CustomerManager.getInstance(RegisterActivity.this).saveCustomer(user);
+                } else {
+                    Toast.makeText(RegisterActivity.this, "网络连接错误", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void error(DSFAServiceManager.DSFAError error) {
+                dismissHud();
+                Toast.makeText(RegisterActivity.this, "网络连接错误", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 }

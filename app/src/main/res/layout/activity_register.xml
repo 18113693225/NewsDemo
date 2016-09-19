@@ -90,6 +90,7 @@
     </LinearLayout>
 
     <support.ui.components.SupportButton
+        android:id="@+id/next_bt"
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_50"
         android:layout_marginLeft="@dimen/margin_16"
