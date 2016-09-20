@@ -30,12 +30,14 @@
         android:padding="@dimen/activity_horizontal_margin">
 
         <ImageView
+            android:id="@+id/news_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:src="@mipmap/ic_new" />
 
         <ImageView
+            android:id="@+id/sale_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -48,12 +50,14 @@
         android:padding="@dimen/activity_horizontal_margin">
 
         <ImageView
+            android:id="@+id/thing_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:src="@mipmap/ic_thing" />
 
         <ImageView
+            android:id="@+id/seek_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -66,11 +70,11 @@
         android:padding="@dimen/activity_horizontal_margin">
 
         <ImageView
+            android:id="@+id/activity_bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:src="@mipmap/ic_activity" />
-
 
     </RelativeLayout>
 </LinearLayout>

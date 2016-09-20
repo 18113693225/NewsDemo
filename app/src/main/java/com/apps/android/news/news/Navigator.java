@@ -11,6 +11,8 @@ import com.apps.android.news.news.ui.activity.IntroActivity;
 import com.apps.android.news.news.ui.activity.MainActivity;
 import com.apps.android.news.news.ui.activity.NewsDetailSActivity;
 import com.apps.android.news.news.ui.activity.RegisterActivity;
+import com.apps.android.news.news.ui.activity.ReleaseInfoActivity;
+import com.apps.android.news.news.ui.activity.ReleaseNewsActivity;
 
 /**
  * Created by android on 2016/9/13.
@@ -74,4 +76,21 @@ public final class Navigator {
         Intent intent = new Intent(activity, RegisterActivity.class);
         ActivityCompat.startActivity(activity, intent, null);
     }
+
+    /**
+     * 跳转到发布新闻
+     */
+    public static void startReleaseNewsActivity(Activity activity) {
+        Intent intent = new Intent(activity, ReleaseNewsActivity.class);
+        ActivityCompat.startActivity(activity, intent, null);
+    }
+
+    /**
+     * 跳转到发布信息
+     */
+    public static void startReleaseInfoActivity(Activity activity) {
+        Intent intent = new Intent(activity, ReleaseInfoActivity.class);
+        ActivityCompat.startActivity(activity, intent, null);
+    }
+
 }

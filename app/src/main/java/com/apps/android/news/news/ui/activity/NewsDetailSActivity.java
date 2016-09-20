@@ -64,7 +64,8 @@ public class NewsDetailSActivity extends BaseActivity {
                 finish();
             }
         } else if (item.getItemId() == R.id.menu_msg) {
-            return true;
+
+
         }
         return true;
     }

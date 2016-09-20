@@ -75,11 +75,8 @@
             android:name=".ui.activity.DoorActivity"
             android:label="微门户"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.activity.MainActivity" />
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+
 
         <!--注册-->
         <activity
@@ -87,6 +84,17 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <!--发布信息-->
+        <activity
+            android:name=".ui.activity.ReleaseInfoActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <!--发布新闻-->
+        <activity
+            android:name=".ui.activity.ReleaseNewsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

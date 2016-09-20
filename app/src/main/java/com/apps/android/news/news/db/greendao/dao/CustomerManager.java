@@ -24,7 +24,7 @@ public class CustomerManager {
 
     public static CustomerManager getInstance(Context context) {
         if (mInstance == null) {
-            synchronized (LableManager.class) {
+            synchronized (CustomerManager.class) {
                 if (mInstance == null) {
                     mInstance = new CustomerManager(context);
                 }

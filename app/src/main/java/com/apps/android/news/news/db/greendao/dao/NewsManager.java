@@ -59,6 +59,14 @@ public class NewsManager {
         return newsList;
     }
 
+    /**
+     * 保存新闻数据
+     * @param news
+     */
+    public void saveNews(List<News> news){
+        newsDao.insertInTx(news);
+    }
+
 
     /**
      * 初始化测试数据

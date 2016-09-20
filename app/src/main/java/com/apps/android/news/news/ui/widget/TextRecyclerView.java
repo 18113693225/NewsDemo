@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -55,8 +56,8 @@ public class TextRecyclerView extends RecyclerView {
         setAdapter(mAdapter);
     }
 
-    public void setData(List<Lable> data) {
-        mAdapter.setData(data);
+    public void setData(List<Lable> data, OnItemClickListener listener) {
+        mAdapter.setData(data, listener);
     }
 
     static class SimpleViewHolder extends ViewHolder {
@@ -81,17 +82,24 @@ public class TextRecyclerView extends RecyclerView {
 
     }
 
+
     /**
      * RecyclerView适配器
      */
     private class SimpleAdapter extends Adapter<ViewHolder> {
         private ArrayList<Lable> mData;
+        private OnItemClickListener mOnItemClickListener;
 
         public SimpleAdapter() {
             mData = new ArrayList<>();
         }
 
-        public void setData(List<Lable> data) {
+//        public void setOnItemClickListener(OnItemClickListener listener) {
+//            this.mOnItemClickListener = listener;
+//        }
+
+        public void setData(List<Lable> data, OnItemClickListener listener) {
+            this.mOnItemClickListener = listener;
             mData.clear();
             mData.addAll(data);
             notifyDataSetChanged();
@@ -115,6 +123,19 @@ public class TextRecyclerView extends RecyclerView {
                 return;
             } else {
                 viewHolder.bind(data);
+                setOnListener(viewHolder);
+            }
+        }
+
+        protected void setOnListener(final RecyclerView.ViewHolder holder) {
+            if (mOnItemClickListener != null) {
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int layoutPosition = holder.getPosition();
+                        mOnItemClickListener.onItemClick(holder.itemView, layoutPosition);
+                    }
+                });
             }
         }
 
@@ -124,5 +145,7 @@ public class TextRecyclerView extends RecyclerView {
         }
     }
 
-
+    public interface OnItemClickListener {
+        void onItemClick(View v, int position);
+    }
 }

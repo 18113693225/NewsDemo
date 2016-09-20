@@ -41,6 +41,7 @@ import cn.bingoogolapple.refreshlayout.BGARefreshLayout;
 /**
  * Created by android on 2016/9/13.
  */
+
 public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARefreshLayoutDelegate {
     private Context mContext;
     public Bundle args;
@@ -119,7 +120,7 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
 
     @Override
     public void onBGARefreshLayoutBeginRefreshing(BGARefreshLayout refreshLayout) {
-        handler.sendEmptyMessageDelayed(0, 2000);
+        upData();
     }
 
 
@@ -175,20 +176,21 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
         }
     };
 
-    private void updata() {
+    private void upData() {
         Customer user = CustomerManager.getInstance(getActivity()).getCustomer();
         String uerId = user.getId();
         DSFAServiceManager.getNewsByUserId(uerId, id, new DSFAServiceManager.DSFACallback() {
             @Override
             public void success(DSFAModel dsfaModel) {
-                //  NewsManager.getInstance(getActivity());
-
-
+                Log.i("AllNews", "success");
+                NewsManager.getInstance(getActivity()).saveNews(dsfaModel.getUserLableNews());
+                handler.sendEmptyMessageDelayed(0, 0);
             }
 
             @Override
             public void error(DSFAServiceManager.DSFAError error) {
-
+                Log.i("AllNews", "news save err");
+                handler.sendEmptyMessageDelayed(0, 0);
             }
         });
     }

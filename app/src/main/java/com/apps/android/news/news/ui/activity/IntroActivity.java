@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.apps.android.news.news.Navigator;
@@ -18,7 +20,9 @@ import com.apps.android.news.news.model.DSFAModel;
 import com.apps.android.news.news.ui.widget.TextRecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -28,11 +32,15 @@ import retrofit2.Call;
 /**
  * Created by android on 2016/9/13.
  */
-public class IntroActivity extends BaseActivity {
+public class IntroActivity extends BaseActivity implements TextRecyclerView.OnItemClickListener {
     @Bind(R.id.all_table_rc)
     TextRecyclerView mRecyclerView;
+    RelativeLayout bg;
+    TextView name;
+
     List<Lable> data;
-    List<Lable> slectData = new ArrayList<Lable>();
+    List<Lable> selectData = new ArrayList<Lable>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +52,7 @@ public class IntroActivity extends BaseActivity {
 
     private void init() {
         data = LableManager.getInstance(this).getLables();
-        mRecyclerView.setData(data);
+        mRecyclerView.setData(data, this);
     }
 
 
@@ -52,6 +60,10 @@ public class IntroActivity extends BaseActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.register_bt:
+                if (selectData.size() < 6) {
+                    Toast.makeText(IntroActivity.this, "请选择6个以上的栏目", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Navigator.startRegisterActivity(IntroActivity.this);
                 break;
             case R.id.look_bt:
@@ -64,7 +76,12 @@ public class IntroActivity extends BaseActivity {
     }
 
     private void look() {
-        DSFAServiceManager.initUser(slectData, new DSFAServiceManager.DSFACallback() {
+        if (selectData.size() < 6) {
+            dismissHud();
+            Toast.makeText(IntroActivity.this, "请选择6个以上的栏目", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        DSFAServiceManager.initUser(selectData, new DSFAServiceManager.DSFACallback() {
             @Override
             public void success(DSFAModel dsfaModel) {
                 dismissHud();
@@ -81,5 +98,23 @@ public class IntroActivity extends BaseActivity {
             }
         });
     }
+
+    @Override
+    public void onItemClick(View v, int position) {
+
+        bg = (RelativeLayout) v.findViewById(R.id.text_rl);
+        name = (TextView) v.findViewById(R.id.label_name);
+        Lable l = data.get(position);
+        if (selectData.contains(l)) {
+            selectData.remove(l);
+            bg.setBackgroundColor(getResources().getColor((R.color.white)));
+            name.setTextColor(getResources().getColor((R.color.title)));
+        } else {
+            selectData.add(l);
+            bg.setBackgroundColor(getResources().getColor((R.color.color_bg_bt)));
+            name.setTextColor(getResources().getColor((R.color.white)));
+        }
+    }
+
 
 }

@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.apps.android.news.news.Navigator;
 import com.apps.android.news.news.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class AddFragment extends Fragment {
@@ -32,5 +34,27 @@ public class AddFragment extends Fragment {
         return view;
     }
 
+    @OnClick({R.id.news_bt, R.id.sale_bt, R.id.thing_bt, R.id.seek_bt, R.id.activity_bt})
+    public void onClic(View view) {
+        switch (view.getId()) {
+            case R.id.news_bt:
+                Navigator.startReleaseNewsActivity(getActivity());
+                break;
+            case R.id.sale_bt:
+                Navigator.startReleaseInfoActivity(getActivity());
+                break;
+            case R.id.thing_bt:
+                Navigator.startReleaseInfoActivity(getActivity());
+                break;
+            case R.id.seek_bt:
+                Navigator.startReleaseInfoActivity(getActivity());
+                break;
+            case R.id.activity_bt:
+                Navigator.startReleaseNewsActivity(getActivity());
+                break;
+            default:
+                break;
+        }
+    }
 
 }
