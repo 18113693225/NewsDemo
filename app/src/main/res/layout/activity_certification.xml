@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:text="上海梦创科技有限公司"
+            android:text="请填写公司名称"
             android:textColor="@color/menu_btn_text_normal"
             android:textSize="@dimen/text_size_14" />
     </RelativeLayout>

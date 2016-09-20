@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.apps.android.news.news.R;
+import com.apps.android.news.news.api.service.DSFAServiceManager;
+import com.apps.android.news.news.db.greendao.dao.LableManager;
+import com.apps.android.news.news.model.DSFAModel;
 
 /**
  * Created by android on 2016/9/18.
@@ -14,7 +17,7 @@ public class InfoActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_certification);
-
+        initLabel();
     }
 
     @Override
@@ -24,4 +27,21 @@ public class InfoActivity extends BaseActivity {
         }
         return true;
     }
+
+
+    private void initLabel() {
+        DSFAServiceManager.getLables(new DSFAServiceManager.DSFACallback() {
+            @Override
+            public void success(DSFAModel dsfaModel) {
+                LableManager.getInstance(InfoActivity.this).saveLables(dsfaModel.getLables());
+            }
+
+            @Override
+            public void error(DSFAServiceManager.DSFAError error) {
+
+            }
+        });
+    }
+
+
 }
