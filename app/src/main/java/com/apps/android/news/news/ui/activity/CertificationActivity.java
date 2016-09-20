@@ -15,6 +15,7 @@ import com.apps.android.news.news.R;
 import com.apps.android.news.news.api.service.DSFAServiceManager;
 import com.apps.android.news.news.db.greendao.entity.Apply;
 import com.apps.android.news.news.model.DSFAModel;
+import com.apps.android.news.news.utils.util.StringUtils;
 
 import java.util.ArrayList;
 
@@ -140,12 +141,12 @@ public class CertificationActivity extends BaseActivity {
     }
 
     private void commit() {
-        if ("".equals(name)) {
+        if (StringUtils.isBlank(name)) {
             dismissHud();
             Toast.makeText(CertificationActivity.this, "请填写账户信息", Toast.LENGTH_SHORT).show();
             return;
         }
-        if ("".equals(location)) {
+        if (StringUtils.isBlank(location)) {
             dismissHud();
             Toast.makeText(CertificationActivity.this, "请选择营业执照", Toast.LENGTH_SHORT).show();
             return;
