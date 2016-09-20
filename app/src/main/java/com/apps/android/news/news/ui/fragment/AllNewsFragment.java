@@ -17,8 +17,12 @@ import android.widget.Toast;
 
 import com.apps.android.news.news.Navigator;
 import com.apps.android.news.news.R;
+import com.apps.android.news.news.api.service.DSFAServiceManager;
+import com.apps.android.news.news.db.greendao.dao.CustomerManager;
 import com.apps.android.news.news.db.greendao.dao.NewsManager;
+import com.apps.android.news.news.db.greendao.entity.Customer;
 import com.apps.android.news.news.db.greendao.entity.News;
+import com.apps.android.news.news.model.DSFAModel;
 import com.apps.android.news.news.ui.adapter.CustomRecyclerViewAdapter;
 import com.apps.android.news.news.ui.widget.DefineBAGRefreshWithLoadView;
 import com.apps.android.news.news.ui.widget.EmptyRecyclerView;
@@ -170,4 +174,24 @@ public class AllNewsFragment extends Fragment implements BGARefreshLayout.BGARef
             }
         }
     };
+
+    private void updata() {
+        Customer user = CustomerManager.getInstance(getActivity()).getCustomer();
+        String uerId = user.getId();
+        DSFAServiceManager.getNewsByUserId(uerId, id, new DSFAServiceManager.DSFACallback() {
+            @Override
+            public void success(DSFAModel dsfaModel) {
+                //  NewsManager.getInstance(getActivity());
+
+
+            }
+
+            @Override
+            public void error(DSFAServiceManager.DSFAError error) {
+
+            }
+        });
+    }
+
+
 }
