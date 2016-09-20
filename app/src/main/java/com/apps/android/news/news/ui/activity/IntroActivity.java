@@ -2,8 +2,6 @@ package com.apps.android.news.news.ui.activity;
 
 
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,14 +18,11 @@ import com.apps.android.news.news.model.DSFAModel;
 import com.apps.android.news.news.ui.widget.TextRecyclerView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-import info.hoang8f.widget.FButton;
-import retrofit2.Call;
+
 
 /**
  * Created by android on 2016/9/13.

@@ -95,42 +95,42 @@
         android:layout_height="1dip"
         android:background="@color/bg_myself" />
 
-    <RelativeLayout
-        android:id="@+id/area_rl"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/height_50"
-        android:background="@drawable/click_base_bt"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin">
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/area_rl"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/height_50"-->
+    <!--android:background="@drawable/click_base_bt"-->
+    <!--android:paddingLeft="@dimen/activity_horizontal_margin"-->
+    <!--android:paddingRight="@dimen/activity_horizontal_margin">-->
 
-        <ImageView
-            android:id="@+id/icon3"
-            android:layout_width="@dimen/weight_30"
-            android:layout_height="@dimen/height_30"
-            android:layout_centerVertical="true"
-            android:scaleType="center"
-            android:src="@mipmap/ic_info_area" />
+    <!--<ImageView-->
+    <!--android:id="@+id/icon3"-->
+    <!--android:layout_width="@dimen/weight_30"-->
+    <!--android:layout_height="@dimen/height_30"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:scaleType="center"-->
+    <!--android:src="@mipmap/ic_info_area" />-->
 
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/margin_5"
-            android:layout_toRightOf="@id/icon3"
-            android:text="所在地区"
-            android:textColor="@color/menu_btn_text_normal"
-            android:textSize="@dimen/text_size_16" />
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_marginLeft="@dimen/margin_5"-->
+    <!--android:layout_toRightOf="@id/icon3"-->
+    <!--android:text="所在地区"-->
+    <!--android:textColor="@color/menu_btn_text_normal"-->
+    <!--android:textSize="@dimen/text_size_16" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text="上海市杨浦区"
-            android:textColor="@color/menu_btn_text_normal"
-            android:textSize="@dimen/text_size_14" />
-    </RelativeLayout>
+    <!--<TextView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentRight="true"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:text="上海市杨浦区"-->
+    <!--android:textColor="@color/menu_btn_text_normal"-->
+    <!--android:textSize="@dimen/text_size_14" />-->
+    <!--</RelativeLayout>-->
 
 
     <support.ui.components.SupportButton
@@ -139,7 +139,7 @@
         android:layout_height="@dimen/height_50"
         android:layout_marginLeft="@dimen/margin_16"
         android:layout_marginRight="@dimen/margin_16"
-        android:layout_marginTop="@dimen/margin_30"
+        android:layout_marginTop="@dimen/margin_40"
         android:gravity="center_horizontal"
         android:text="提交审核"
         android:textColor="@color/white"

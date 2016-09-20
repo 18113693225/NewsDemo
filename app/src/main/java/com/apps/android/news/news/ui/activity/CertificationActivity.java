@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -63,7 +64,7 @@ public class CertificationActivity extends BaseActivity {
         return true;
     }
 
-    @OnClick({R.id.info_rl, R.id.image_rl, R.id.area_rl, R.id.commit_bt})
+    @OnClick({R.id.info_rl, R.id.image_rl, R.id.commit_bt})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.info_rl:
@@ -72,10 +73,8 @@ public class CertificationActivity extends BaseActivity {
             case R.id.image_rl:
                 showMediaPicker();
                 break;
-            case R.id.area_rl:
-
-                break;
             case R.id.commit_bt:
+                showHud();
                 commit();
                 break;
             default:
@@ -141,18 +140,28 @@ public class CertificationActivity extends BaseActivity {
     }
 
     private void commit() {
+        if ("".equals(name)) {
+            dismissHud();
+            Toast.makeText(CertificationActivity.this, "请填写账户信息", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if ("".equals(location)) {
+            dismissHud();
+            Toast.makeText(CertificationActivity.this, "请选择营业执照", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Apply apply = new Apply();
         apply.setCompany_name(name);
         apply.setLicense(location);
         DSFAServiceManager.checkCompanyInfo(apply, new DSFAServiceManager.DSFACallback() {
             @Override
             public void success(DSFAModel dsfaModel) {
-
+                dismissHud();
             }
 
             @Override
             public void error(DSFAServiceManager.DSFAError error) {
-
+                dismissHud();
             }
         });
     }
